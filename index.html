@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Histórico do veículo — Auto Mecânica Itabaiana</title>
+<meta name="description" content="Serviços feitos no seu carro na Auto Mecânica Itabaiana.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#1E2329">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E2329'/%3E%3Cpath d='M32 12C25 23 19 30 19 38a13 13 0 0 0 26 0c0-8-6-15-13-26z' fill='%23E8A317'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --asfalto: #1E2329;
+    --asfalto-2: #2B323A;
+    --oleo: #E8A317;
+    --oleo-texto: #8A5A00;
+    --concreto: #E4E6E8;
+    --papel: #FFFFFF;
+    --texto: #1E2329;
+    --cinza: #59616A;
+    --linha: #C7CCD1;
+    --falha: #A4262C;
+    --cond: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+    --corpo: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --concreto: #111417;
+      --papel: #1A1F24;
+      --texto: #E9EBED;
+      --cinza: #A2AAB3;
+      --linha: #313840;
+      --oleo-texto: #F0B840;
+      --falha: #FF8A80;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--concreto);
+    color: var(--texto);
+    font: 400 17px/1.5 var(--corpo);
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--oleo); outline-offset: 2px; }
+
+  .topo {
+    background: var(--asfalto);
+    color: #fff;
+    padding: 18px 20px 46px;
+    padding-top: max(18px, env(safe-area-inset-top));
+  }
+  .topo-in, main, .rodape { max-width: 560px; margin: 0 auto; }
+  .marca {
+    margin: 0;
+    font: 700 22px/1.1 var(--cond);
+    letter-spacing: .01em;
+  }
+  .topo .sub { margin: 2px 0 0; color: #B9C0C7; font-size: 15px; }
+
+  main { padding: 0 14px; }
+
+  /* A etiqueta: versão digital do adesivo de troca de óleo */
+  .etiqueta {
+    position: relative;
+    margin-top: -30px;
+    background: var(--papel);
+    border: 2px solid var(--asfalto);
+    border-radius: 12px;
+    padding: 20px 18px 18px;
+    box-shadow: 0 1px 0 rgba(30, 35, 41, .08), 0 10px 24px -14px rgba(30, 35, 41, .45);
+  }
+  @media (prefers-color-scheme: dark) { .etiqueta { border-color: #3A424B; } }
+  .etiqueta h1 {
+    margin: 0;
+    font: 700 32px/1.05 var(--cond);
+  }
+  .etiqueta .ano { font-weight: 600; color: var(--cinza); }
+  .placa { margin: 6px 0 0; color: var(--cinza); font-size: 15px; }
+  .placa strong { font-weight: 600; color: var(--texto); letter-spacing: .04em; }
+  .texto { margin: 10px 0 0; }
+
+  .barra {
+    margin: 18px -18px 0;
+    padding: 7px 18px 6px;
+    background: var(--asfalto);
+    color: #fff;
+    font: 600 19px/1.2 var(--cond);
+  }
+  @media (prefers-color-scheme: dark) { .barra { background: #0C0E10; } }
+
+  /* Hodômetro */
+  .hodometro {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin: 16px 0 0;
+  }
+  .rodas { display: flex; gap: 3px; }
+  .rodas .grupo { display: flex; gap: 3px; }
+  .rodas .grupo + .grupo { margin-left: 7px; }
+  .roda {
+    position: relative;
+    width: clamp(30px, 10vw, 46px);
+    height: clamp(48px, 14.6vw, 64px);
+    overflow: hidden;
+    border-radius: 5px;
+    background: linear-gradient(#3A424C, var(--asfalto) 32%, var(--asfalto) 68%, #3A424C);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .35);
+    color: #fff;
+    font: 600 clamp(34px, 11.2vw, 50px)/1 var(--cond);
+    font-variant-numeric: tabular-nums;
+  }
+  .fita {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(calc(var(--d, 0) * -10%));
+    transition: transform 1s cubic-bezier(.22, .8, .25, 1);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  .fita span {
+    height: clamp(48px, 14.6vw, 64px);
+    display: grid;
+    place-items: center;
+  }
+  .hodometro .un {
+    font: 700 24px/1 var(--cond);
+    color: var(--oleo-texto);
+    padding-bottom: 4px;
+  }
+  .carregando .fita { animation: girar 1.1s linear infinite; animation-delay: calc(var(--i, 0) * -170ms); }
+  @keyframes girar { to { transform: translateY(-90%); } }
+  .nota { margin: 12px 0 0; color: var(--cinza); font-size: 15px; }
+  .nota strong { color: var(--texto); font-weight: 600; }
+
+  /* Histórico */
+  .historico { margin: 30px 4px 0; }
+  .historico h2 {
+    margin: 0 0 14px;
+    font: 700 24px/1.1 var(--cond);
+  }
+  .historico h2 .qtd { color: var(--cinza); font-weight: 600; }
+  .tempo { list-style: none; margin: 0; padding: 0; }
+  .tempo > li {
+    position: relative;
+    padding: 0 0 22px 26px;
+  }
+  .tempo > li::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 8px; bottom: -6px;
+    width: 2px;
+    background: var(--linha);
+  }
+  .tempo > li:last-child::before { display: none; }
+  .tempo > li::after {
+    content: "";
+    position: absolute;
+    left: 0; top: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--concreto);
+    border: 3px solid var(--cinza);
+  }
+  .tempo > li.oleo::after { background: var(--oleo); border-color: var(--oleo); }
+  .quando {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .quando time { font-weight: 600; }
+  .quando .km { color: var(--cinza); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .trocas { list-style: none; margin: 6px 0 0; padding: 0; }
+  .trocas li { display: flex; gap: 8px; align-items: baseline; }
+  .trocas svg { flex: none; width: 14px; height: 14px; position: relative; top: 2px; color: var(--oleo-texto); }
+  .outros { margin: 6px 0 0; white-space: pre-line; }
+  .obs { margin: 6px 0 0; color: var(--cinza); font-size: 15px; white-space: pre-line; }
+  .vazio { margin: 0; color: var(--cinza); }
+
+  /* Contato */
+  .contato { margin: 18px 4px 0; display: grid; gap: 10px; }
+  .botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: var(--asfalto);
+    color: #fff;
+    font: 600 18px/1.2 var(--corpo);
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .botao svg { width: 22px; height: 22px; flex: none; }
+  @media (prefers-color-scheme: dark) { .botao { background: var(--oleo); color: #1E2329; } }
+  .botao.leve { background: transparent; color: var(--texto); border: 2px solid var(--linha); }
+  .insta { justify-self: center; padding: 6px 10px; color: var(--cinza); font-size: 15px; text-decoration: none; }
+  .insta strong { color: var(--texto); font-weight: 600; }
+
+  .rodape { padding: 26px 18px max(28px, env(safe-area-inset-bottom)); color: var(--cinza); font-size: 13px; text-align: center; }
+  .rodape p { margin: 2px 0; }
+
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (min-width: 600px) {
+    .topo { padding-left: 24px; padding-right: 24px; }
+    .etiqueta { padding: 26px 26px 22px; }
+    .barra { margin-left: -26px; margin-right: -26px; padding-left: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fita { transition: none; }
+    .carregando .fita { animation: none; }
+  }
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="topo-in">
+    <p class="marca">Auto Mecânica Itabaiana</p>
+    <p class="sub">Histórico do veículo</p>
+  </div>
+</header>
+
+<main id="app" aria-live="polite">
+  <section class="etiqueta carregando">
+    <h1>Carregando o histórico…</h1>
+    <noscript><p class="texto">Ative o JavaScript do navegador para ver o histórico.</p></noscript>
+  </section>
+</main>
+
+<footer class="rodape" id="rodape"></footer>
+
+<script>
+const CONFIG = {
+  // URL do Apps Script publicado como "App da Web" (termina em /exec)
+  api: 'https://script.google.com/macros/s/AKfycbwKQxqecLfgH81OpkDezRGqKyVdDJXs0XnGHv10uIJEyINgBYV2bwKd2Ya68YH-dI4N/exec',
+  oficina: 'Auto Mecânica Itabaiana',
+  whatsapp: '557998513926',
+  instagram: 'automec135',
+};
+
+const ICONE_CHECK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICONE_WHATS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>';
+
+const app = document.getElementById('app');
+const rodape = document.getElementById('rodape');
+const params = new URLSearchParams(location.search);
+const codigo = (params.get('c') || '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+function el(tag, attrs, ...filhos) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === 'class') n.className = v;
+    else if (k === 'html') n.innerHTML = v; // só para ícones fixos deste arquivo
+    else n.setAttribute(k, v);
+  }
+  for (const f of filhos.flat()) if (f !== null && f !== undefined && f !== false) n.append(f);
+  return n;
+}
+const milhar = (n) => Number(n).toLocaleString('pt-BR');
+const km = (n) => milhar(n) + ' km';
+function dataBR(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : '';
+}
+
+/* ---------- Hodômetro ---------- */
+function hodometro(valor, girando) {
+  const digitos = girando ? '000000' : String(Math.max(0, Math.round(valor))).padStart(6, '0');
+  const grupos = [];
+  // agrupa de 3 em 3 a partir da direita, como 160 273
+  for (let fim = digitos.length; fim > 0; fim -= 3) grupos.unshift(digitos.slice(Math.max(0, fim - 3), fim));
+  let i = 0;
+  const rodas = el('div', { class: 'rodas', 'aria-hidden': 'true' },
+    grupos.map((g) => el('div', { class: 'grupo' }, [...g].map((d) => {
+      const fita = el('div', { class: 'fita', style: `--i:${i++}` },
+        Array.from({ length: 10 }, (_, k) => el('span', {}, String(k))));
+      fita.dataset.d = d;
+      return el('div', { class: 'roda' }, fita);
+    }))));
+  return el('div', { class: 'hodometro', role: girando ? null : 'img', 'aria-label': girando ? null : `${milhar(valor)} quilômetros` },
+    rodas, el('span', { class: 'un', 'aria-hidden': 'true' }, 'km'));
+}
+function rodar(raiz) {
+  // primeiro desenha no zero, depois gira até o número (uma única animação)
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    raiz.querySelectorAll('.fita[data-d]').forEach((f) => f.style.setProperty('--d', f.dataset.d));
+  }));
+}
+
+/* ---------- Telas ---------- */
+function linkWhats(texto) {
+  return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`;
+}
+function contato(texto) {
+  return el('section', { class: 'contato', 'aria-label': 'Fale com a oficina' },
+    el('a', { class: 'botao', href: linkWhats(texto), target: '_blank', rel: 'noopener' },
+      el('span', { html: ICONE_WHATS, style: 'display:contents' }), 'Agendar pelo WhatsApp'),
+    el('a', { class: 'insta', href: `https://instagram.com/${CONFIG.instagram}`, target: '_blank', rel: 'noopener' },
+      'Instagram ', el('strong', {}, '@' + CONFIG.instagram)));
+}
+
+function telaCarregando() {
+  const et = el('section', { class: 'etiqueta carregando' },
+    el('h1', {}, 'Carregando o histórico…'),
+    el('div', { class: 'barra' }, 'Próxima troca de óleo'),
+    hodometro(0, true));
+  app.replaceChildren(et);
+}
+
+function telaMensagem(titulo, texto, extra) {
+  app.replaceChildren(
+    el('section', { class: 'etiqueta' }, el('h1', {}, titulo), el('p', { class: 'texto' }, texto), extra || null),
+    contato('Olá! Vim pela página do histórico do veículo.'));
+}
+
+function telaHistorico(d) {
+  const v = d.veiculo || {};
+  const servicos = Array.isArray(d.servicos) ? d.servicos : [];
+  const nome = v.modelo || 'Seu veículo';
+
+  const comProxima = servicos.find((s) => s.proximaTrocaKm);
+  const ultimaOleo = servicos.find((s) => (s.itens || []).includes('Óleo do motor'));
+  const ultimo = servicos[0];
+
+  const etiqueta = el('section', { class: 'etiqueta', 'aria-labelledby': 'veiculo' },
+    el('h1', { id: 'veiculo' }, nome, v.ano ? el('span', { class: 'ano' }, ' ' + v.ano) : null),
+    v.placa ? el('p', { class: 'placa' }, 'Placa ', el('strong', {}, v.placa)) : null);
+
+  if (comProxima) {
+    const base = ultimaOleo || comProxima;
+    etiqueta.append(
+      el('div', { class: 'barra' }, 'Próxima troca de óleo'),
+      hodometro(comProxima.proximaTrocaKm),
+      el('p', { class: 'nota' }, 'Última troca em ', el('strong', {}, dataBR(base.data)),
+        base.km ? [', com ', el('strong', {}, km(base.km))] : null, '.'));
+  } else if (ultimo) {
+    etiqueta.append(el('div', { class: 'barra' }, 'Último serviço'));
+    if (ultimo.km) etiqueta.append(hodometro(ultimo.km));
+    etiqueta.append(el('p', { class: 'nota' }, 'Feito em ', el('strong', {}, dataBR(ultimo.data)), '.'));
+  }
+
+  const historico = el('section', { class: 'historico', 'aria-labelledby': 'tit-hist' });
+  if (servicos.length) {
+    historico.append(
+      el('h2', { id: 'tit-hist' }, 'Serviços feitos ', el('span', { class: 'qtd' }, `(${servicos.length})`)),
+      el('ol', { class: 'tempo' }, servicos.map((s) => {
+        const itens = s.itens || [];
+        return el('li', { class: itens.includes('Óleo do motor') ? 'oleo' : null },
+          el('div', { class: 'quando' },
+            el('time', { datetime: s.data }, dataBR(s.data) || 'Data não informada'),
+            s.km ? el('span', { class: 'km' }, km(s.km)) : null),
+          itens.length ? el('ul', { class: 'trocas', 'aria-label': 'Itens trocados' },
+            itens.map((t) => el('li', {}, el('span', { html: ICONE_CHECK, style: 'display:contents' }), t))) : null,
+          s.outros ? el('p', { class: 'outros' }, s.outros) : null,
+          s.obs ? el('p', { class: 'obs' }, 'Obs.: ' + s.obs) : null);
+      })));
+  } else {
+    historico.append(el('h2', { id: 'tit-hist' }, 'Serviços feitos'),
+      el('p', { class: 'vazio' }, 'Ainda não há serviços registrados para este veículo.'));
+  }
+
+  app.replaceChildren(etiqueta, historico,
+    contato(`Olá! Quero agendar um serviço para o meu ${nome} (código ${codigo}).`));
+  rodar(etiqueta);
+
+  document.title = `${nome} — Histórico — ${CONFIG.oficina}`;
+  const at = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(d.atualizadoEm || '');
+  rodape.replaceChildren(
+    at ? el('p', {}, `Atualizado em ${at[3]}/${at[2]}/${at[1]}, às ${at[4]}:${at[5]}.`) : '',
+    el('p', {}, `Serviços registrados pela ${CONFIG.oficina}.`));
+}
+
+/* ---------- Dados ---------- */
+const EXEMPLO = {
+  ok: true,
+  veiculo: { modelo: 'Fiat Strada Freedom', ano: '2019', placa: 'QKX-•••3' },
+  servicos: [
+    { data: '2025-11-14', km: 153273, itens: ['Óleo do motor', 'Filtro de óleo'], outros: '', proximaTrocaKm: 160273, obs: 'Óleo 5W30 sintético.' },
+    { data: '2025-08-02', km: 149880, itens: [], outros: 'Troca da correia dentada e do tensor.\nAlinhamento e balanceamento.', proximaTrocaKm: null, obs: '' },
+    { data: '2025-04-19', km: 146273, itens: ['Óleo do motor', 'Filtro de óleo', 'Filtro de ar', 'Filtro de combustível'], outros: '', proximaTrocaKm: 153273, obs: '' },
+    { data: '2024-12-07', km: 139504, itens: ['Óleo de freio'], outros: 'Pastilhas de freio dianteiras.', proximaTrocaKm: null, obs: 'Discos ainda em bom estado.' },
+  ],
+  atualizadoEm: '2026-10-21T17:40',
+};
+
+async function buscar() {
+  if (codigo === 'DEMO') {
+    await new Promise((r) => setTimeout(r, 900));
+    return EXEMPLO;
+  }
+  if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(CONFIG.api)) throw new Error('config');
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 20000);
+  try {
+    const r = await fetch(`${CONFIG.api}?c=${encodeURIComponent(codigo)}`, { signal: ctrl.signal, cache: 'no-store' });
+    if (!r.ok) throw new Error('http ' + r.status);
+    return await r.json();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+async function iniciar() {
+  rodape.replaceChildren(el('p', {}, `Página da ${CONFIG.oficina}, Itabaiana – SE.`));
+  if (!codigo) {
+    telaMensagem('Histórico do veículo',
+      'Para ver os serviços feitos no seu carro, aponte a câmera do celular para o QR Code da etiqueta da oficina.');
+    return;
+  }
+  telaCarregando();
+  try {
+    const d = await buscar();
+    if (d && d.ok) { telaHistorico(d); return; }
+    telaMensagem('Veículo não encontrado',
+      `O código ${codigo} não está no sistema da oficina. Confira se o QR Code é de uma etiqueta da ${CONFIG.oficina} ou fale com a gente.`);
+  } catch (e) {
+    const tentar = el('button', { class: 'botao leve', type: 'button', style: 'margin-top:16px;width:100%' }, 'Tentar de novo');
+    tentar.addEventListener('click', iniciar);
+    telaMensagem('Não deu para carregar o histórico',
+      e && e.message === 'config'
+        ? 'A página ainda está sendo configurada pela oficina. Tente de novo mais tarde.'
+        : 'Verifique a internet do celular e tente de novo.',
+      tentar);
+  }
+}
+iniciar();
+</script>
+</body>
+</html>
