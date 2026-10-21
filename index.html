@@ -243,8 +243,10 @@
 
 <script>
 const CONFIG = {
-  // URL do Apps Script publicado como "App da Web" (termina em /exec)
-  api: 'https://script.google.com/macros/s/AKfycbwKQxqecLfgH81OpkDezRGqKyVdDJXs0XnGHv10uIJEyINgBYV2bwKd2Ya68YH-dI4N/exec',
+  // Aba "Público" da planilha, publicada na Web como CSV (Arquivo > Compartilhar > Publicar na Web)
+  csv: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQCRi2r-963sWD9_KOUtmVxy0oF-g6sk4OO_qbfeVPKGO5NvvPKSvIY_wHwb4w4VFH6kQnWHphOjzLP/pub?gid=1707716804&single=true&output=csv',
+  // Igual ao SAL_PUBLICO do Apps Script: o código do QR vira um identificador que não dá para reverter
+  sal: 'automec135|',
   oficina: 'Auto Mecânica Itabaiana',
   whatsapp: '557998513926',
   instagram: 'automec135',
@@ -386,7 +388,7 @@ function telaHistorico(d) {
 /* ---------- Dados ---------- */
 const EXEMPLO = {
   ok: true,
-  veiculo: { modelo: 'Fiat Strada Freedom', ano: '2019', placa: 'QKX-•••3' },
+  veiculo: { modelo: 'Fiat Strada Freedom', ano: '2019', placa: '' },
   servicos: [
     { data: '2025-11-14', km: 153273, itens: ['Óleo do motor', 'Filtro de óleo'], outros: '', proximaTrocaKm: 160273, obs: 'Óleo 5W30 sintético.' },
     { data: '2025-08-02', km: 149880, itens: [], outros: 'Troca da correia dentada e do tensor.\nAlinhamento e balanceamento.', proximaTrocaKm: null, obs: '' },
@@ -396,21 +398,77 @@ const EXEMPLO = {
   atualizadoEm: '2026-10-21T17:40',
 };
 
+async function idPublico(c) {
+  const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(CONFIG.sal + c)));
+  return [...hash.slice(0, 10)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function lerCSV(texto) {
+  const linhas = [];
+  let linha = [];
+  let campo = '';
+  let aspas = false;
+  for (let i = 0; i < texto.length; i++) {
+    const ch = texto[i];
+    if (aspas) {
+      if (ch === '"' && texto[i + 1] === '"') { campo += '"'; i++; }
+      else if (ch === '"') aspas = false;
+      else campo += ch;
+    } else if (ch === '"') aspas = true;
+    else if (ch === ',') { linha.push(campo); campo = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && texto[i + 1] === '\n') i++;
+      linha.push(campo); linhas.push(linha);
+      linha = []; campo = '';
+    } else campo += ch;
+  }
+  if (campo !== '' || linha.length) { linha.push(campo); linhas.push(linha); }
+  return linhas;
+}
+
+const numero = (v) => { const s = String(v || '').replace(/\D/g, ''); return s ? parseInt(s, 10) : null; };
+
 async function buscar() {
   if (codigo === 'DEMO') {
     await new Promise((r) => setTimeout(r, 900));
     return EXEMPLO;
   }
-  if (!/^https:\/\/script\.google(usercontent)?\.com\//.test(CONFIG.api)) throw new Error('config');
+  if (!/^https:\/\/docs\.google\.com\//.test(CONFIG.csv)) throw new Error('config');
+  if (!/^[A-Z0-9]{6,12}$/.test(codigo)) return { ok: false, erro: 'codigo_invalido' };
+  const id = await idPublico(codigo);
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 20000);
+  let texto;
   try {
-    const r = await fetch(`${CONFIG.api}?c=${encodeURIComponent(codigo)}`, { signal: ctrl.signal, cache: 'no-store' });
+    const r = await fetch(CONFIG.csv, { signal: ctrl.signal, cache: 'no-store' });
     if (!r.ok) throw new Error('http ' + r.status);
-    return await r.json();
+    texto = await r.text();
   } finally {
     clearTimeout(t);
   }
+  const linhas = lerCSV(texto);
+  const cab = linhas[0] || [];
+  const c = Object.fromEntries(['id', 'modelo', 'ano', 'data', 'km', 'itens', 'outros', 'proxima_troca_km', 'obs'].map((n) => [n, cab.indexOf(n)]));
+  if (c.id < 0) throw new Error('formato');
+  let atualizadoEm = '';
+  const meus = [];
+  for (const l of linhas.slice(1)) {
+    if (l[c.id] === '_') atualizadoEm = l[c.modelo] || '';
+    else if (l[c.id] === id) meus.push(l);
+  }
+  if (!meus.length) return { ok: false, erro: 'nao_encontrado' };
+  const servicos = meus
+    .filter((l) => l[c.data] || l[c.itens] || l[c.outros])
+    .map((l) => ({
+      data: l[c.data] || '',
+      km: numero(l[c.km]),
+      itens: String(l[c.itens] || '').split(';').map((s) => s.trim()).filter(Boolean),
+      outros: l[c.outros] || '',
+      proximaTrocaKm: numero(l[c.proxima_troca_km]),
+      obs: l[c.obs] || '',
+    }))
+    .sort((a, b) => (b.data || '').localeCompare(a.data || '') || (b.km || 0) - (a.km || 0));
+  return { ok: true, veiculo: { modelo: meus[0][c.modelo] || '', ano: meus[0][c.ano] || '', placa: '' }, servicos, atualizadoEm };
 }
 
 async function iniciar() {
