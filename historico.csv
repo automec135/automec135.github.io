@@ -1,15 +1,7 @@
 id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs
-_,2026-10-22T16:30,,,,,,,
-12ab83b546e691b5d91a,,,2026-06-22,,,"Bico injeção eletrônica
-Válvula selenoide
-Serviço calibração
-Serviço do ar-condicionado",,
-7ccc4af0a5bb61f7461d,,,2025-10-07,,,"Lanterna traseira
-Rele pisca
-Alternador
-Correia de alternador
-Lâmpada de 2 polo
-Lâmpada 1 polo",,
+_,2026-10-22T16:34,,,,,,,
+12ab83b546e691b5d91a,,,,,,,,
+7ccc4af0a5bb61f7461d,,,,,,,,
 da509385439c7ca30f74,Cruze,2012,2026-10-22,104773,Óleo do motor; Filtro de óleo,"Kit válvula retenção
 Junta cabeçote
 Faceamento do cabeçote
@@ -18,24 +10,11 @@ Militec-1 condicionador de metais
 Abrir rosca, colocar bucha ou helicoide
 Rolamento tensor correia dentada
 Mangueira do suspiro ar",109773,Óleo Motul 5W30
-da509385439c7ca30f74,Cruze,2012,2026-10-16,10000,Óleo do motor; Filtro de óleo,"Kit válvula retenção
-Junta cabeçote
-Faceamento do cabeçote
-Lingua de sogra media
-Militec-1 condicionador de metais
-Abrir rosca, colocar bucha ou
-Rolamento tensor correia dentada",20000,
-ac28cd478b6595e828f6,,,2026-09-25,,Óleo do motor; Filtro de óleo; Filtro de combustível,"Ultrasson de bico alta pressão
-Descarbonização do motor
-Aditivo concentrado radiador orgânico rosa 1L
-Limpeza técnica de arrefecimento
-Oring vedação DS;12101",,
+ac28cd478b6595e828f6,,,,,,,,
 caf77b95808e05cd7079,Corolla XEI 2.0,2021/2022,2026-10-22,39742,Óleo do motor; Filtro de óleo,"Descarbonização do motor
 Ultrasson bico de baixa pressão
 Ultrasson de bico alta pressão
 Serviço mecanico+zera contador de falhas
 Aditivo pronto uso radiador org.rosa 1L
 Vela ignição",,5w30
-10d476729870b6ae483f,,,2025-09-30,,Filtro de combustível,"Reparo de bico
-Rastreamento do sistema
-Ultrasson de bico",,
+10d476729870b6ae483f,,,,,,,,
