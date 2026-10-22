@@ -215,6 +215,64 @@
   .rodape { padding: 26px 18px max(28px, env(safe-area-inset-bottom)); color: var(--cinza); font-size: 13px; text-align: center; }
   .rodape p { margin: 2px 0; }
 
+  /* Selo "revisão em dia" */
+  .selo { margin: 16px 0 0; padding: 12px 14px; border-radius: 10px; border: 2px solid var(--cor-selo); background: var(--fundo-selo); }
+  .selo.ok { --cor-selo: #1E7B34; --fundo-selo: rgba(30, 123, 52, .08); }
+  .selo.perto { --cor-selo: #C27C00; --fundo-selo: rgba(232, 161, 0, .12); }
+  .selo.atrasada { --cor-selo: var(--vermelho); --fundo-selo: rgba(206, 4, 5, .08); }
+  .selo .titulo-selo { display: flex; align-items: center; gap: 8px; font: 800 19px/1.2 var(--titulo); color: var(--cor-selo); }
+  .selo .titulo-selo::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--cor-selo); flex: none; }
+  .selo .trilho { margin: 10px 0 6px; height: 10px; border-radius: 6px; background: var(--linha); overflow: hidden; }
+  .selo .cheio { display: block; height: 100%; border-radius: 6px; background: var(--cor-selo); }
+  .selo p { margin: 0; font-size: 15px; }
+  .acoes-selo { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 12px; }
+  .acoes-selo .botao { min-height: 44px; font-size: 16px; padding: 10px 14px; }
+  .link-simples { font-size: 15px; color: var(--cinza); }
+
+  /* Garantia em cada serviço */
+  .garantia { margin: 6px 0 0; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 99px; }
+  .garantia.valendo { background: rgba(30, 123, 52, .1); color: #1E7B34; }
+  .garantia.vencida { background: var(--linha); color: var(--cinza); }
+  @media (prefers-color-scheme: dark) { .garantia.valendo { color: #5BD07A; } .selo.ok { --cor-selo: #4CC26B; } .selo.perto { --cor-selo: #F2B640; } }
+
+  /* Plano de manutenção */
+  .plano { margin: 30px 4px 0; }
+  .plano h2 { margin: 0 0 6px; font: 800 23px/1.15 var(--titulo); }
+  .plano .ref { margin: 0 0 12px; color: var(--cinza); font-size: 14px; }
+  .plano ul { list-style: none; margin: 0; padding: 0; background: var(--papel); border: 1px solid var(--linha); border-radius: 10px; }
+  .plano li { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 2px 10px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--linha); }
+  .plano li > .quando-item { grid-column: 2; text-align: left; }
+  .plano li:first-child { border-top: 0; }
+  .plano .bola { width: 12px; height: 12px; border-radius: 50%; background: var(--linha); }
+  .plano .ok .bola { background: #1E7B34; } .plano .perto .bola { background: #E8A100; } .plano .verificar .bola { background: var(--vermelho); }
+  .plano .item { font-weight: 600; }
+  .plano .quando-item { color: var(--cinza); font-size: 14px; text-align: right; }
+
+  /* Avaliar e indicar */
+  .cartao-site { margin: 22px 4px 0; padding: 16px; background: var(--papel); border: 1px solid var(--linha); border-radius: 10px; }
+  .cartao-site h2 { margin: 0 0 6px; font: 800 20px/1.2 var(--titulo); }
+  .cartao-site p { margin: 0 0 12px; color: var(--cinza); font-size: 15px; }
+  .estrelas { color: #E8A100; letter-spacing: 2px; }
+  .contato .linha-botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* Certificado (só aparece impresso / no PDF) */
+  .cert { display: none; }
+  @media print {
+    @page { margin: 14mm; }
+    :root { --fundo: #fff; --papel: #fff; --texto: #000; --cinza: #333; --linha: #bbb; --borda: #000; --vermelho: #CE0405; }
+    body { background: #fff; color: #000; font-size: 12pt; }
+    .topo { padding-top: 0; }
+    .logo { width: 220px; }
+    .contato, .acoes-selo, .avaliar, .indicar, .rodape .sem-print, button { display: none !important; }
+    .cert { display: block; margin: 0 0 10px; padding: 10px 0; border-top: 2px solid #000; border-bottom: 2px solid #000; text-align: center; }
+    .cert h2 { margin: 0; font: 800 18pt/1.2 var(--titulo); }
+    .cert p { margin: 4px 0 0; font-size: 10.5pt; }
+    .etiqueta { box-shadow: none; }
+    .tempo > li, .plano li, .selo { break-inside: avoid; }
+    .roda { background: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .barra, .selo, .selo *, .plano .bola, .garantia { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
   @media (min-width: 600px) {
     .etiqueta { padding: 26px 26px 22px; }
     .barra { margin-left: -26px; margin-right: -26px; padding-left: 26px; }
@@ -265,6 +323,18 @@ const CONFIG = {
   oficina: 'Auto Mecânica Itabaiana',
   whatsapp: '557998513926',
   instagram: 'automec135',
+  // Google Maps (para avaliar e indicar a oficina)
+  googleAvaliar: 'https://search.google.com/local/writereview?placeid=ChIJY4t12n76DwcRfR5_4El1BAM',
+  googleMapa: 'https://www.google.com/maps/search/?api=1&query=Auto%20Mec%C3%A2nica%20Itabaiana&query_place_id=ChIJY4t12n76DwcRfR5_4El1BAM',
+  site: 'https://automec135.github.io/',
+  mesesTrocaOleo: 6,   // prazo da troca de óleo por tempo
+  diasGarantia: 90,    // garantia legal de serviços (Código de Defesa do Consumidor)
+  diasPedirAvaliacao: 20,
+  // Plano de manutenção: referência geral em meses (o manual do carro manda)
+  plano: [
+    ['Óleo do motor', 6], ['Filtro de óleo', 6], ['Filtro de ar', 12], ['Filtro de combustível', 12],
+    ['Filtro de cabine', 12], ['Óleo de freio', 24], ['Óleo de câmbio', 48],
+  ],
 };
 
 const ICONE_CHECK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5 6 12.5 14 3.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -343,6 +413,128 @@ function telaMensagem(titulo, texto, extra) {
     contato('Olá! Vim pela página do histórico do veículo.'));
 }
 
+/* ---------- Datas ---------- */
+function dataDe(iso) { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ''); return m ? new Date(+m[1], +m[2] - 1, +m[3], 12) : null; }
+function maisMeses(d, n) { const x = new Date(d); const dia = x.getDate(); x.setMonth(x.getMonth() + n); if (x.getDate() < dia) x.setDate(0); return x; }
+function maisDias(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const brDe = (d) => dataBR(iso(d));
+function mesesDesde(d) { const h = new Date(); let m = (h.getFullYear() - d.getFullYear()) * 12 + h.getMonth() - d.getMonth(); if (h.getDate() < d.getDate()) m--; return Math.max(0, m); }
+function haQuanto(d) {
+  const m = mesesDesde(d);
+  if (m >= 12) { const a = Math.floor(m / 12); return `há ${a} ano${a > 1 ? 's' : ''}${m % 12 ? ` e ${m % 12} ${m % 12 > 1 ? 'meses' : 'mês'}` : ''}`; }
+  if (m >= 1) return `há ${m} ${m > 1 ? 'meses' : 'mês'}`;
+  const dias = Math.round((Date.now() - d) / 864e5);
+  return dias <= 0 ? 'hoje' : dias === 1 ? 'ontem' : `há ${dias} dias`;
+}
+
+/* ---------- Selo, lembrete, garantia, plano ---------- */
+function selo(ultimaOleo, comProxima) {
+  const inicio = dataDe(ultimaOleo.data);
+  if (!inicio) return null;
+  const prazo = maisMeses(inicio, CONFIG.mesesTrocaOleo);
+  const frac = Math.min(1, Math.max(0, (Date.now() - inicio) / (prazo - inicio)));
+  const estado = frac >= 1 ? 'atrasada' : frac >= 0.8 ? 'perto' : 'ok';
+  const titulo = { ok: 'Revisão em dia', perto: 'Troca de óleo chegando', atrasada: 'Troca de óleo atrasada' }[estado];
+  const kmTxt = comProxima && comProxima.proximaTrocaKm ? [' ou aos ', el('strong', {}, km(comProxima.proximaTrocaKm)), ', o que vier primeiro'] : '';
+  const texto = estado === 'atrasada'
+    ? ['O prazo era ', el('strong', {}, brDe(prazo)), kmTxt, '. Agende a troca.']
+    : ['Próxima troca até ', el('strong', {}, brDe(prazo)), kmTxt, '.'];
+  return { estado, prazo, el: el('div', { class: 'selo ' + estado, role: 'status' },
+    el('div', { class: 'titulo-selo' }, titulo),
+    el('div', { class: 'trilho', 'aria-hidden': 'true' }, el('span', { class: 'cheio', style: `width:${Math.round(frac * 100)}%` })),
+    el('p', {}, ...texto)) };
+}
+
+function ics(nome, quando) {
+  const d = iso(quando).replace(/-/g, '');
+  const fim = iso(maisDias(quando, 1)).replace(/-/g, '');
+  const agora = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+  const url = `${CONFIG.site}?c=${codigo}`;
+  const esc = (t) => t.replace(/([,;\\])/g, '\\$1');
+  return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Auto Mecanica Itabaiana//Historico//PT', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
+    `UID:troca-${codigo}-${d}@automec135.github.io`, `DTSTAMP:${agora}`, `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${fim}`,
+    `SUMMARY:${esc('Troca de óleo — ' + nome)}`,
+    `DESCRIPTION:${esc(`${CONFIG.oficina} — WhatsApp (79) 9851-3926. Histórico do carro: ${url}`)}`,
+    'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', `DESCRIPTION:${esc('Amanhã: troca de óleo do ' + nome)}`, 'END:VALARM',
+    'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+}
+function botoesLembrete(nome, prazo) {
+  const quando = prazo < new Date() ? maisDias(new Date(), 2) : prazo;
+  const baixarIcs = el('button', { class: 'botao', type: 'button' }, '📅 Me lembre da próxima troca');
+  baixarIcs.addEventListener('click', () => {
+    const blob = new Blob([ics(nome, quando)], { type: 'text/calendar;charset=utf-8' });
+    const a = el('a', { href: URL.createObjectURL(blob), download: 'troca-de-oleo.ics' });
+    document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  });
+  const d = iso(quando).replace(/-/g, ''), fim = iso(maisDias(quando, 1)).replace(/-/g, '');
+  const google = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Troca de óleo — ' + nome)}&dates=${d}/${fim}&details=${encodeURIComponent(`${CONFIG.oficina} — WhatsApp (79) 9851-3926. Histórico: ${CONFIG.site}?c=${codigo}`)}`;
+  return el('div', { class: 'acoes-selo' }, baixarIcs,
+    el('a', { class: 'link-simples', href: google, target: '_blank', rel: 'noopener' }, 'ou na Agenda do Google'));
+}
+
+function garantia(s) {
+  const d = dataDe(s.data);
+  if (!d) return null;
+  const fim = maisDias(d, CONFIG.diasGarantia);
+  return new Date() <= fim
+    ? el('p', { class: 'garantia valendo' }, `✓ Garantia de ${CONFIG.diasGarantia} dias: até ${brDe(fim)}`)
+    : el('p', { class: 'garantia vencida' }, `Garantia de ${CONFIG.diasGarantia} dias terminou em ${brDe(fim)}`);
+}
+
+function plano(servicos) {
+  const linhas = CONFIG.plano.map(([item, meses]) => {
+    const s = servicos.find((x) => (x.itens || []).includes(item));
+    const d = s && dataDe(s.data);
+    let classe = 'nunca', txt = 'sem registro aqui';
+    if (d) {
+      const m = mesesDesde(d);
+      classe = m >= meses ? 'verificar' : m >= meses * 0.8 ? 'perto' : 'ok';
+      txt = `última troca ${haQuanto(d)}` + (classe === 'verificar' ? ' — verificar' : '');
+    }
+    return el('li', { class: classe }, el('span', { class: 'bola', 'aria-hidden': 'true' }),
+      el('span', { class: 'item' }, item, el('span', { class: 'quando-item', style: 'font-weight:400' }, ` · a cada ${meses} meses`)),
+      el('span', { class: 'quando-item' }, txt));
+  });
+  return el('section', { class: 'plano', 'aria-labelledby': 'tit-plano' },
+    el('h2', { id: 'tit-plano' }, 'Plano de manutenção'),
+    el('p', { class: 'ref' }, 'Referência geral por tempo. O manual do seu carro e o KM rodado mandam; na dúvida, fale com a gente.'),
+    el('ul', {}, linhas));
+}
+
+function avaliar(ultimo) {
+  const d = ultimo && dataDe(ultimo.data);
+  if (!d || (Date.now() - d) / 864e5 > CONFIG.diasPedirAvaliacao) return null;
+  return el('section', { class: 'cartao-site avaliar' },
+    el('h2', {}, 'Como foi o atendimento? ', el('span', { class: 'estrelas', 'aria-hidden': 'true' }, '★★★★★')),
+    el('p', {}, 'Sua avaliação no Google ajuda outras pessoas de Itabaiana a encontrar a oficina. Leva menos de um minuto.'),
+    el('a', { class: 'botao', href: CONFIG.googleAvaliar, target: '_blank', rel: 'noopener' }, 'Avaliar no Google'));
+}
+
+function indicar() {
+  const texto = `Recomendo a ${CONFIG.oficina}, em Itabaiana-SE. Fazem a manutenção e deixam todo o histórico do carro no celular, pelo QR Code. Localização: ${CONFIG.googleMapa}`;
+  const b = el('button', { class: 'botao leve', type: 'button' }, 'Indicar a oficina a um amigo');
+  b.addEventListener('click', async () => {
+    if (navigator.share) { try { await navigator.share({ title: CONFIG.oficina, text: texto }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+    window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+  });
+  return b;
+}
+
+function botaoPDF() {
+  const b = el('button', { class: 'botao leve', type: 'button' }, 'Baixar histórico (PDF)');
+  b.addEventListener('click', () => window.print());
+  return b;
+}
+
+function certificado(nome, ano) {
+  return el('section', { class: 'cert', 'aria-hidden': 'true' },
+    el('h2', {}, 'Histórico de manutenção'),
+    el('p', {}, `${nome}${ano ? ' ' + ano : ''} — serviços feitos na ${CONFIG.oficina}, Itabaiana-SE.`),
+    el('p', {}, `Emitido em ${brDe(new Date())}. Código de verificação: `, el('strong', {}, codigo),
+      ` — confira a qualquer momento em ${CONFIG.site.replace(/^https:\/\//, '')}?c=${codigo}`));
+}
+
 function telaHistorico(d) {
   const v = d.veiculo || {};
   const servicos = Array.isArray(d.servicos) ? d.servicos : [];
@@ -355,6 +547,9 @@ function telaHistorico(d) {
   const etiqueta = el('section', { class: 'etiqueta', 'aria-labelledby': 'veiculo' },
     el('h1', { id: 'veiculo' }, nome, v.ano ? el('span', { class: 'ano' }, ' ' + v.ano) : null),
     v.placa ? el('p', { class: 'placa' }, 'Placa ', el('strong', {}, v.placa)) : null);
+
+  const s = ultimaOleo ? selo(ultimaOleo, comProxima) : null;
+  if (s) etiqueta.append(s.el, botoesLembrete(nome, s.prazo));
 
   if (comProxima) {
     const base = ultimaOleo || comProxima;
@@ -382,15 +577,20 @@ function telaHistorico(d) {
           itens.length ? el('ul', { class: 'trocas', 'aria-label': 'Itens trocados' },
             itens.map((t) => el('li', {}, el('span', { html: ICONE_CHECK, style: 'display:contents' }), t))) : null,
           s.outros ? el('p', { class: 'outros' }, s.outros) : null,
-          s.obs ? el('p', { class: 'obs' }, 'Obs.: ' + s.obs) : null);
+          s.obs ? el('p', { class: 'obs' }, 'Obs.: ' + s.obs) : null,
+          garantia(s));
       })));
   } else {
     historico.append(el('h2', { id: 'tit-hist' }, 'Serviços feitos'),
       el('p', { class: 'vazio' }, 'Ainda não há serviços registrados para este veículo.'));
   }
 
-  app.replaceChildren(etiqueta, historico,
-    contato(`Olá! Quero agendar um serviço para o meu ${nome} (código ${codigo}).`));
+  const pedido = s && s.estado !== 'ok'
+    ? `Olá! Quero agendar a troca de óleo do meu ${nome} (código ${codigo}).`
+    : `Olá! Quero agendar um serviço para o meu ${nome} (código ${codigo}).`;
+  const ct = contato(pedido);
+  ct.insertBefore(el('div', { class: 'linha-botoes' }, botaoPDF(), indicar()), ct.children[1]);
+  app.replaceChildren(certificado(nome, v.ano), etiqueta, avaliar(ultimo) || '', historico, plano(servicos), ct);
   rodar(etiqueta);
 
   document.title = `${nome} — Histórico — ${CONFIG.oficina}`;
@@ -401,16 +601,17 @@ function telaHistorico(d) {
 }
 
 /* ---------- Dados ---------- */
+const antes = (dias) => iso(maisDias(new Date(), -dias));
 const EXEMPLO = {
   ok: true,
   veiculo: { modelo: 'Fiat Strada Freedom', ano: '2019', placa: '' },
   servicos: [
-    { data: '2025-11-14', km: 153273, itens: ['Óleo do motor', 'Filtro de óleo'], outros: '', proximaTrocaKm: 160273, obs: 'Óleo 5W30 sintético.' },
-    { data: '2025-08-02', km: 149880, itens: [], outros: 'Troca da correia dentada e do tensor.\nAlinhamento e balanceamento.', proximaTrocaKm: null, obs: '' },
-    { data: '2025-04-19', km: 146273, itens: ['Óleo do motor', 'Filtro de óleo', 'Filtro de ar', 'Filtro de combustível'], outros: '', proximaTrocaKm: 153273, obs: '' },
-    { data: '2024-12-07', km: 139504, itens: ['Óleo de freio'], outros: 'Pastilhas de freio dianteiras.', proximaTrocaKm: null, obs: 'Discos ainda em bom estado.' },
+    { data: antes(12), km: 153273, itens: ['Óleo do motor', 'Filtro de óleo'], outros: '', proximaTrocaKm: 160273, obs: 'Óleo 5W30 sintético.' },
+    { data: antes(95), km: 149880, itens: [], outros: 'Troca da correia dentada e do tensor.\nAlinhamento e balanceamento.', proximaTrocaKm: null, obs: '' },
+    { data: antes(200), km: 146273, itens: ['Óleo do motor', 'Filtro de óleo', 'Filtro de ar', 'Filtro de combustível'], outros: '', proximaTrocaKm: 153273, obs: '' },
+    { data: antes(420), km: 139504, itens: ['Óleo de freio'], outros: 'Pastilhas de freio dianteiras.', proximaTrocaKm: null, obs: 'Discos ainda em bom estado.' },
   ],
-  atualizadoEm: '2026-10-21T17:40',
+  atualizadoEm: iso(new Date()) + 'T08:00',
 };
 
 async function idPublico(c) {
