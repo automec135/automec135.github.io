@@ -1,5 +1,5 @@
 id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs
-_,2026-10-22T14:49,,,,,,,
+_,2026-10-22T16:23,,,,,,,
 12ab83b546e691b5d91a,,,2026-06-22,,,"Bico injeção eletrônica
 Válvula selenoide
 Serviço calibração
@@ -10,7 +10,15 @@ Alternador
 Correia de alternador
 Lâmpada de 2 polo
 Lâmpada 1 polo",,
-da509385439c7ca30f74,Cruze,,2026-10-16,10000,Óleo do motor; Filtro de óleo,"Kit válvula retenção
+da509385439c7ca30f74,Cruze,2012,2026-10-22,104773,Óleo do motor; Filtro de óleo,"Kit válvula retenção
+Junta cabeçote
+Faceamento do cabeçote
+Lingua de sogra media
+Militec-1 condicionador de metais
+Abrir rosca, colocar bucha ou helicoide
+Rolamento tensor correia dentada
+Mangueira do suspiro ar",109773,Óleo Motul 5W30
+da509385439c7ca30f74,Cruze,2012,2026-10-16,10000,Óleo do motor; Filtro de óleo,"Kit válvula retenção
 Junta cabeçote
 Faceamento do cabeçote
 Lingua de sogra media
