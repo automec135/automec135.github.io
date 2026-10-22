@@ -1,5 +1,5 @@
 id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs
-_,2026-10-22T16:23,,,,,,,
+_,2026-10-22T16:30,,,,,,,
 12ab83b546e691b5d91a,,,2026-06-22,,,"Bico injeção eletrônica
 Válvula selenoide
 Serviço calibração
@@ -30,12 +30,12 @@ Descarbonização do motor
 Aditivo concentrado radiador orgânico rosa 1L
 Limpeza técnica de arrefecimento
 Oring vedação DS;12101",,
-caf77b95808e05cd7079,Corolla XEI 2.0,2021/2022,2026-10-22,35000,,"Descarbonização do motor
+caf77b95808e05cd7079,Corolla XEI 2.0,2021/2022,2026-10-22,39742,Óleo do motor; Filtro de óleo,"Descarbonização do motor
 Ultrasson bico de baixa pressão
 Ultrasson de bico alta pressão
 Serviço mecanico+zera contador de falhas
 Aditivo pronto uso radiador org.rosa 1L
-Vela ignição",40000,5w30
+Vela ignição",,5w30
 10d476729870b6ae483f,,,2025-09-30,,Filtro de combustível,"Reparo de bico
 Rastreamento do sistema
 Ultrasson de bico",,
