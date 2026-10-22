@@ -1,27 +1,20 @@
 id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs
-_,2026-10-22T13:18,,,,,,,
-12ab83b546e691b5d91a,,,2026-06-22,,,"Bico injeção eletronica
-Valvula selenoide
-Servico tecnico calibração
-Servico do ar-condicionado.",,
-7ccc4af0a5bb61f7461d,,,2025-10-07,,,"Lantern tras fiat: uno 2005/ ld direit cristal
-Rele pisca fiat: uno rabaixado
-Alternador fiat: uno 2005 motor fire:
-Correia de alternad fiat fire: 1.0/ 1.3/ 1.4
-Lampada de 2 polo
-Lampada 1 polo",,
-ac28cd478b6595e828f6,,,2026-09-25,,Óleo do motor; Filtro de óleo; Filtro de combustível,"Ultrasson de bico alta pressao
-Descarbonizacao do motor
-Car 80 descarbonizante 300 ml/snap-on
-Silicone neutro alta temp ht black 60G bli ( wurth)
-Aditivo conc. rad.org. rosa 1L/WURTH
-Agua desmineralizada 1L.
-Limpa radiador biod. 250ML/WURTH
-Desengraxante express 500ML/310G /wurth
-Limpeza tecnica de arreifecimento
-Servico tecnico mecanico
+_,2026-10-22T14:22,,,,,,,
+12ab83b546e691b5d91a,,,2026-06-22,,,"Bico injeção eletrônica
+Válvula selenoide
+Serviço calibração
+Serviço do ar-condicionado",,
+7ccc4af0a5bb61f7461d,,,2025-10-07,,,"Lanterna traseira
+Rele pisca
+Alternador
+Correia de alternador
+Lâmpada de 2 polo
+Lâmpada 1 polo",,
+ac28cd478b6595e828f6,,,2026-09-25,,Óleo do motor; Filtro de óleo; Filtro de combustível,"Ultrasson de bico alta pressão
+Descarbonização do motor
+Aditivo concentrado radiador orgânico rosa 1L
+Limpeza técnica de arrefecimento
 Oring vedação DS;12101",,
 10d476729870b6ae483f,,,2025-09-30,,Filtro de combustível,"Reparo de bico
-Limpador descarbonizador CAR80
 Rastreamento do sistema
 Ultrasson de bico",,
