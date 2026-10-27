@@ -1,14 +1,14 @@
-id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs
-_,2026-10-23T17:27,,,,,,,
-12ab83b546e691b5d91a,,,,,,,,
+id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs,proxima_troca_data,proxima_correia_km,proxima_correia_data,garantia
+_,2026-10-27T14:57,,,,,,,,,,,
+12ab83b546e691b5d91a,,,,,,,,,,,,
 d736d6de56d7625c2c35,Golf 1.6 Mtr Power,2008,2026-10-23,317874,Óleo do motor; Filtro de óleo,"Aditivo concentrado radiador orgânico rosa 1L
 Tubo refrig
 Tampa reserv. 21071
 Reserv. água radiador
 Int temp radiador universal 92
-Inter. pressão de óleo",318874,15w40
-e3f1d4ebb29055681d02,corsa sedan,2002/2003,2026-10-23,227750,Óleo do motor; Filtro de óleo,Reparo tramb,232750,Óleo Petronas Syntium 800 15W40 semissintético
-7ccc4af0a5bb61f7461d,,,,,,,,
+Inter. pressão de óleo",318874,15w40,2027-04-23,,,
+e3f1d4ebb29055681d02,corsa sedan,2002/2003,2026-10-23,227750,Óleo do motor; Filtro de óleo,Reparo tramb,232750,Óleo Petronas Syntium 800 15W40 semissintético,2027-04-23,,,
+7ccc4af0a5bb61f7461d,,,,,,,,,,,,
 da509385439c7ca30f74,Cruze,2012,2026-10-22,104773,Óleo do motor; Filtro de óleo,"Kit válvula retenção
 Junta cabeçote
 Faceamento do cabeçote
@@ -16,12 +16,12 @@ Lingua de sogra media
 Militec-1 condicionador de metais
 Abrir rosca, colocar bucha ou helicoide
 Rolamento tensor correia dentada
-Mangueira do suspiro ar",109773,Óleo Motul 5W30
-ac28cd478b6595e828f6,,,,,,,,
+Mangueira do suspiro ar",109773,Óleo Motul 5W30,2027-04-22,144773,2027-10-22,
+ac28cd478b6595e828f6,,,,,,,,,,,,
 caf77b95808e05cd7079,Corolla XEI 2.0,2021/2022,2026-10-22,39742,,"Descarbonização do motor
 Ultrasson bico de baixa pressão
 Ultrasson de bico alta pressão
 Serviço mecanico+zera contador de falhas
 Aditivo pronto uso radiador org.rosa 1L
-Vela ignição",,5w30
-10d476729870b6ae483f,,,,,,,,
+Vela ignição",,5w30,,,,
+10d476729870b6ae483f,,,,,,,,,,,,
