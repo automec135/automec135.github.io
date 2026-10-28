@@ -50,22 +50,28 @@
   .heroi-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .heroi .logo { height: 40px; width: auto; display: block; }
   .redondo { width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3F3F46; color: #fff; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
-  .selo-topo { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; margin-top: 18px; }
+  .selo-topo { display: flex; width: fit-content; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; margin: 18px auto 0; }
   .selo-topo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
   .selo-topo.ok { background: rgba(34,197,94,.16); color: #86EFAC; }
   .selo-topo.perto { background: rgba(245,158,11,.18); color: #FCD34D; }
   .selo-topo.atrasada { background: rgba(239,68,68,.2); color: #FCA5A5; }
-  .desenho { display: block; width: 100%; max-width: 300px; height: auto; margin: 18px auto 6px; color: #fff; }
-  .heroi h1 { font-weight: 800; font-size: 32px; line-height: 1.1; letter-spacing: -.5px; margin-top: 8px; overflow-wrap: anywhere; }
-  .meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 15px; color: #D4D4D4; }
-  .meta .vazio { flex: 1; }
+  .desenho { display: block; width: 100%; max-width: 330px; height: auto; margin: 18px auto 6px; color: #fff; }
+  .desenho .c { fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linejoin: round; }
+  .desenho .j { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
+  .desenho .f { fill: none; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+  .desenho .g { fill: none; stroke: currentColor; stroke-width: 1.9; }
+  .desenho .o { opacity: .55; }
+  .desenho .chao { stroke: #CE0405; stroke-width: 3; stroke-linecap: round; }
+  .heroi h1 { font-weight: 800; font-size: 30px; line-height: 1.12; letter-spacing: -.4px; margin-top: 6px; text-align: center; overflow-wrap: anywhere; }
+  .meta { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 12px; margin-top: 10px; font-size: 15px; font-weight: 500; color: #D4D4D4; font-variant-numeric: tabular-nums; }
+  .meta .ponto { width: 4px; height: 4px; border-radius: 50%; background: #CE0405; flex: none; }
 
   /* placa Mercosul pequena */
   .placa { display: inline-flex; flex-direction: column; width: 84px; height: 27px; background: #fff; border: 1.5px solid #A3A3A3; border-radius: 4px; overflow: hidden; flex: none; }
   .placa .faixa { height: 7px; background: #003399; display: flex; align-items: center; justify-content: center; position: relative; }
   .placa .faixa span { font: 700 5px/1 var(--corpo); letter-spacing: 1px; color: #fff; }
   .placa .faixa svg { position: absolute; right: 3px; top: 1px; }
-  .placa .letras { flex: 1; display: flex; align-items: center; justify-content: center; font: 600 17px/1 "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: 1.5px; color: #111; }
+  .placa .letras { flex: 1; display: flex; align-items: center; justify-content: center; font: 600 14px/1 "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: .6px; padding: 0 4px; white-space: nowrap; overflow: hidden; color: #111; }
 
   /* ---------- cartões ---------- */
   .conteudo { padding: 0 16px 28px; display: flex; flex-direction: column; gap: 20px; }
@@ -77,6 +83,22 @@
   .pilula.ok { color: var(--verde-texto); background: var(--verde-fundo); }
   .pilula.perto, .pilula.verificar { color: var(--alerta-texto); background: #FEF3C7; }
   .pilula.atrasada { color: #7F1D1D; background: #FEE2E2; }
+  .quando { font-size: 13px; color: var(--cinza); white-space: nowrap; }
+  .quando.perto { color: #B45309; font-weight: 600; }
+  .quando.atrasada { color: #B91C1C; font-weight: 700; }
+  .restam { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-top: -4px; }
+  .restam strong { font: 800 46px/1 var(--titulo); letter-spacing: -1.5px; font-variant-numeric: tabular-nums; }
+  .restam strong.curto { font-size: 34px; letter-spacing: -1px; }
+  .restam span { font-size: 17px; color: var(--cinza); }
+  .segmentos { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
+  .segmentos span { height: 8px; border-radius: 3px; background: #E7E5E4; }
+  .segmentos span.cheio { background: var(--preto); }
+  .segmentos.perto span.cheio { background: #D97706; }
+  .segmentos.atrasada span.cheio { background: #B91C1C; }
+  .blocos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .blocos div { background: #F5F5F4; border-radius: 14px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .blocos span { font-size: 13px; color: var(--cinza); }
+  .blocos strong { font: 700 19px/1.2 var(--titulo); font-variant-numeric: tabular-nums; }
   .proxima { display: flex; align-items: center; gap: 18px; }
   .anel { position: relative; width: 124px; height: 124px; flex: none; }
   .anel .meio { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
@@ -113,9 +135,11 @@
   .saude li .cab { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
   .saude li strong { font-size: 15px; }
   .saude li span.q { font-size: 13px; color: var(--cinza); }
+  .saude li span.km { font-size: 14px; color: var(--texto); margin-top: 2px; }
+  .saude li span.km b { font: 700 17px/1.2 var(--titulo); font-variant-numeric: tabular-nums; }
   .saude li.verificar, .saude li.perto { background: var(--alerta-fundo); border-color: var(--alerta-borda); }
   .saude li.verificar strong, .saude li.perto strong { color: var(--alerta-texto); }
-  .saude li.verificar span.q, .saude li.perto span.q { color: #92400E; }
+  .saude li.verificar span.q, .saude li.perto span.q, .saude li.verificar span.km, .saude li.perto span.km { color: #92400E; }
 
   /* linha do tempo */
   .tempo { margin: 0; padding: 0; list-style: none; }
@@ -211,8 +235,9 @@ const CONFIG = {
   servicosVisiveis: 3, // o resto abre em "Ver todos"
   // Referência geral por tempo (o manual do carro manda)
   plano: [
-    ['Óleo do motor', 6], ['Filtro de óleo', 6], ['Filtro de ar', 12], ['Filtro de combustível', 12],
-    ['Filtro de cabine', 12], ['Óleo de freio', 24], ['Óleo de câmbio', 48],
+    // [item, meses, KM] — referência geral; o manual do carro manda
+    ['Óleo do motor', 6, 10000], ['Filtro de óleo', 6, 10000], ['Filtro de ar', 12, 10000], ['Filtro de combustível', 12, 10000],
+    ['Filtro de cabine', 12, 10000], ['Óleo de freio', 24, 20000], ['Óleo de câmbio', 48, 40000],
   ],
 };
 
@@ -237,50 +262,231 @@ const IC = {
   bandeira: '<svg width="7" height="5" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#009C3B"/><path d="M10 2l7.5 5L10 12 2.5 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="2.8" fill="#002776"/></svg>',
 };
 
-/* ---------- desenho do carro pelo modelo ---------- */
-const FORMAS = {
-  picape: { r: [82, 268], nome: 'uma picape',
-    corpo: 'M14 74V46q0-4 4-4h132V16q0-6 8-6h54q8 0 14 6l22 22 52 6q20 3 22 14v10q0 6-6 6h-26a22 22 0 0 0-44 0H104a22 22 0 0 0-44 0z',
-    janelas: 'M158 36V17h38v19zM204 36V17h10q5 0 8 4l14 15zM22 50h120' },
-  hatch: { r: [98, 228], nome: 'um carro hatch',
-    corpo: 'M52 74V52q0-8 6-12l18-18q4-5 12-5h84q10 0 18 6l24 17 44 6q20 3 22 12v10q0 6-6 6h-24a22 22 0 0 0-44 0H120a22 22 0 0 0-44 0z',
-    janelas: 'M80 40l9-16q2-3 7-3h38v19zM142 40V21h32q8 0 13 5l15 14z' },
-  sedan: { r: [76, 260], nome: 'um sedã',
-    corpo: 'M20 74V58q0-8 10-10l42-4q12-2 24-14l14-10q6-4 14-4h62q12 0 20 6l26 18 58 6q26 4 28 14v10q0 6-6 6h-30a22 22 0 0 0-44 0H98a22 22 0 0 0-44 0z',
-    janelas: 'M108 40l14-15q4-4 10-4h28v19zM168 40V21h22q8 0 13 4l17 15z' },
-  suv: { r: [80, 262], nome: 'um SUV',
-    corpo: 'M22 74V40q0-10 8-14l14-14q4-4 12-4h140q10 0 16 6l24 22 56 6q22 3 24 14v12q0 6-6 6h-26a22 22 0 0 0-44 0H102a22 22 0 0 0-44 0z',
-    janelas: 'M34 34l13-19h57v19zM112 34V15h82q6 0 10 4l16 15z' },
-  furgao: { r: [78, 268], nome: 'um furgão',
-    corpo: 'M16 74V16q0-8 8-8h206q10 0 16 8l24 24 30 6q18 4 20 14v8q0 6-6 6h-24a22 22 0 0 0-44 0H100a22 22 0 0 0-44 0z',
-    janelas: 'M226 38V16h12q5 0 8 4l16 18zM150 14v56' },
+/* ---------- desenho do carro pelo modelo (silhuetas em traço) ---------- */
+const CH = 118;
+function cr(pts, closed) {
+  // Catmull-Rom -> Bezier; ponto [x,y,t] t=tensão (0 = canto vivo, 1 = suave)
+  const n = pts.length; let d = `M${pts[0][0]} ${pts[0][1]}`;
+  const P = (i) => closed ? pts[(i + n) % n] : pts[Math.max(0, Math.min(n - 1, i))];
+  const last = closed ? n : n - 1;
+  for (let i = 0; i < last; i++) {
+    const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+    const t1 = (p1[2] ?? 1) / 6, t2 = (p2[2] ?? 1) / 6;
+    const c1 = [p1[0] + (p2[0] - p0[0]) * t1, p1[1] + (p2[1] - p0[1]) * t1];
+    const c2 = [p2[0] - (p3[0] - p1[0]) * t2, p2[1] - (p3[1] - p1[1]) * t2];
+    d += `C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`;
+  }
+  return d + (closed ? 'Z' : '');
+}
+function arco(cx, cy, r, yb, dir) {
+  // arco da caixa de roda; dir 1 = de trás p/ frente (x decrescente)
+  const dx = Math.sqrt(Math.max(0, r * r - (yb - cy) ** 2));
+  return dir ? `L${(cx + dx).toFixed(1)} ${yb}A${r} ${r} 0 1 0 ${(cx - dx).toFixed(1)} ${yb}` : '';
+}
+function roda(cx, R) {
+  const cy = CH - R; let s = '';
+  s += `<circle cx="${cx}" cy="${cy}" r="${R}" class="g"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${(R * .74).toFixed(1)}" class="f"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${(R * .16).toFixed(1)}" class="f"/>`;
+  const ri = R * .17, re = R * .7;
+  for (let i = 0; i < 6; i++) {
+    const a = i * Math.PI / 3 - Math.PI / 2;
+    for (const o of [-.17, .17]) {
+      const a2 = a + o + .22; // raio torcido
+      const x1 = cx + Math.cos(a + o * .6) * ri, y1 = cy + Math.sin(a + o * .6) * ri;
+      const x2 = cx + Math.cos(a2) * re, y2 = cy + Math.sin(a2) * re;
+      s += `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}" class="f"/>`;
+    }
+  }
+  return s;
+}
+function janela(pts, r = 3) {
+  // polígono com cantos arredondados
+  const n = pts.length; let d = '';
+  for (let i = 0; i < n; i++) {
+    const p0 = pts[(i - 1 + n) % n], p = pts[i], p1 = pts[(i + 1) % n];
+    const rr = p[2] ?? r;
+    const v0 = [p0[0] - p[0], p0[1] - p[1]], v1 = [p1[0] - p[0], p1[1] - p[1]];
+    const l0 = Math.hypot(...v0), l1 = Math.hypot(...v1);
+    const k0 = Math.min(rr, l0 / 2) / l0, k1 = Math.min(rr, l1 / 2) / l1;
+    const a = [p[0] + v0[0] * k0, p[1] + v0[1] * k0], b = [p[0] + v1[0] * k1, p[1] + v1[1] * k1];
+    d += (i ? 'L' : 'M') + `${a[0].toFixed(1)} ${a[1].toFixed(1)}Q${p[0]} ${p[1]} ${b[0].toFixed(1)} ${b[1].toFixed(1)}`;
+  }
+  return d + 'Z';
+}
+function silhueta(f) {
+  const R = f.R, yb = f.yb, ra = R + 5;
+  const wf = f.rodas[0], wr = f.rodas[1], cy = CH - R;
+  // contorno: topo (frente-baixo -> traseira-baixo) + base com caixas de roda
+  let d = cr(f.topo, false);
+  const tr = f.topo[f.topo.length - 1], fr = f.topo[0];
+  d += `L${tr[0]} ${yb}` + arco(wr, cy, ra, yb, 1) + arco(wf, cy, ra, yb, 1) + `L${fr[0]} ${yb}Z`;
+  let s = `<path d="${d}" class="c"/>`;
+  // friso das caixas de roda
+  for (const x of [wf, wr]) {
+    const r2 = ra + 3.5, dx = Math.sqrt(r2 * r2 - (yb - 1 - cy) ** 2);
+    s += `<path d="M${(x + dx).toFixed(1)} ${yb - 1}A${r2} ${r2} 0 0 0 ${(x - dx).toFixed(1)} ${yb - 1}" class="f"/>`;
+  }
+  // soleira
+  const s0 = wf + ra + 6, s1 = wr - ra - 6;
+  s += `<path d="M${s0} ${yb - 5}Q${(s0 + s1) / 2} ${yb - 6.5} ${s1} ${yb - 5}" class="f"/>`;
+  if (f.saia !== false) s += `<path d="M${s0 - 3} ${yb - 1}L${s1 + 3} ${yb - 1}" class="f o"/>`;
+  // janelas
+  for (const j of f.janelas) s += `<path d="${janela(j, f.rj ?? 3)}" class="j"/>`;
+  // vinco / linha de cintura
+  if (f.vinco) s += `<path d="${cr(f.vinco, false)}" class="f"/>`;
+  if (f.vinco2) s += `<path d="${cr(f.vinco2, false)}" class="f o"/>`;
+  // portas
+  for (const p of f.portas || []) s += `<path d="${p}" class="f"/>`;
+  // maçanetas
+  for (const [x, y] of f.macanetas || []) s += `<path d="M${x - 6} ${y}h12q2 0 2 1.6t-2 1.6h-12q-2 0-2-1.6t2-1.6z" class="f"/><path d="M${x - 3} ${y + 1.6}h7" class="f o"/>`;
+  // retrovisor
+  if (f.espelho) { const [x, y] = f.espelho; s += `<path d="M${x} ${y}l-2-7q-.5-3 3-3.5h6q4 .5 3.5 4l-1 4q-1 2.5-4 2.5z" class="f"/><path d="M${x + 2} ${y}l1 4" class="f"/>`; }
+  // farol, lanterna, tampa de combustível e extras
+  for (const k of ['farol', 'lanterna', 'extra']) if (f[k]) s += `<path d="${f[k]}" class="f"/>`;
+  if (f.tanque) { const [x, y] = f.tanque; s += `<rect x="${x}" y="${y}" width="11" height="9" rx="2.5" class="f"/>`; }
+  s += roda(wf, R) + roda(wr, R);
+  s += `<path d="M6 ${CH + 1}H394" class="chao"/>`;
+  return s;
+}
+const FAMILIAS = {
+  hatch_pequeno: { nome: 'Hatch pequeno', ex: 'Mobi, Kwid, Up!, Uno, Celta, Palio, Ka',
+    R: 21, yb: 104, rodas: [96, 296],
+    topo: [[42,103,0],[40,88],[43,72],[58,62],[110,55],[124,53,.6],[170,26],[200,22],[276,24],[318,30,.6],[336,42],[343,66],[343,94],[337,103,0]],
+    janelas: [[[132,53],[174,30,8],[208,26,3],[210,51,2]], [[217,50,2],[216,26,3],[262,27,8],[280,47,2]]],
+    vinco: [[50,63],[130,60],[260,56],[341,52]], vinco2: [[132,88],[200,86],[258,84]],
+    portas: ['M130 55C126 72 127 90 132 102','M213 52L211 103','M284 49C282 62 277 70 272 78'],
+    macanetas: [[190,60],[266,57]], espelho: [136,56], tanque: [298,50],
+    farol: 'M43 71L54 64Q68 61 80 63L74 68Q60 72 44 76Z', lanterna: 'M342 46L333 46Q330 52 331 60L342 60Q344 54 342 46Z',
+    extra: 'M41 84Q50 83 56 88L57 97Q49 98 42 96' },
+  hatch_classico: { nome: 'Hatch clássico (quadrado)', ex: 'Uno Mille, Gol quadrado, Corsa antigo, Fiesta antigo', rj: 1.5,
+    R: 20, yb: 104, rodas: [98, 300],
+    topo: [[42,103,0],[40,86],[41,68,.3],[48,61,.3],[116,56,.3],[124,54,0],[160,26,.3],[170,23,0],[304,23,.3],[314,26,.3],[340,52,.3],[348,62,.3],[351,94],[345,103,0]],
+    janelas: [[[131,53],[162,27],[212,26],[213,52]], [[220,52],[220,26],[282,26],[283,52]], [[290,52],[290,26],[304,26],[312,30],[326,50]]],
+    vinco: [[44,63],[200,62],[346,60]], vinco2: [[128,84],[200,84],[262,84]],
+    portas: ['M128 56L130 103','M216 54L215 103','M287 54C287 64 285 72 280 78'],
+    macanetas: [[200,60],[272,58]], espelho: [134,56], tanque: [326,60],
+    farol: 'M41 65H72V73H41Z', lanterna: 'M350 63H338V80H351Z', extra: 'M41 83H60V95H42M74 65V73' },
+  hatch: { nome: 'Hatch', ex: 'Onix, HB20, Gol, Polo, Argo, Sandero, 208, Fox',
+    R: 22, yb: 105, rodas: [92, 310],
+    topo: [[30,104,0],[28,88],[31,70],[48,58],[108,50],[122,48,.6],[172,22],[210,17],[284,19],[328,26,.6],[350,40],[358,62],[359,94],[353,104,0]],
+    janelas: [[[130,49],[174,27,8],[214,22,3],[216,47,2]], [[223,46,2],[222,22,3],[280,23,9],[304,36,3],[300,42,2]]],
+    vinco: [[36,60],[130,57],[260,52],[330,47],[356,46]], vinco2: [[128,90],[210,88],[278,84]],
+    portas: ['M128 51C124 70 125 90 131 103','M219 48L217 104','M306 40C305 56 296 66 290 72'],
+    macanetas: [[198,57],[284,53]], espelho: [134,52], tanque: [320,46],
+    farol: 'M30 68L42 60Q58 56 74 58L68 63Q50 68 31 72Z', lanterna: 'M357 44L345 44Q339 50 339 58L355 58Q359 52 357 44Z',
+    extra: 'M29 82Q38 81 44 86L46 96Q37 97 30 95' },
+  sedan_compacto: { nome: 'Sedã compacto', ex: 'Onix Plus, HB20S, Virtus, Voyage, Logan, Cronos, Prisma',
+    R: 22, yb: 105, rodas: [86, 296],
+    topo: [[22,104,0],[20,88],[23,70],[40,58],[102,50],[116,48,.6],[166,22],[204,17],[260,19],[304,33],[338,37],[376,34,.4],[382,46,.5],[386,70],[385,94],[378,104,0]],
+    janelas: [[[124,49],[168,27,8],[208,22,3],[210,47,2]], [[217,47,2],[216,22,3],[256,23,10],[288,37,3],[294,43,2]]],
+    vinco: [[28,60],[124,57],[260,52],[340,48],[382,48]], vinco2: [[122,90],[200,88],[272,84]],
+    portas: ['M122 51C118 70 119 90 125 103','M213 48L211 104','M298 43C297 58 288 68 277 72'],
+    macanetas: [[192,57],[274,53]], espelho: [128,52], tanque: [318,50],
+    farol: 'M22 68L34 60Q50 56 66 58L60 63Q42 68 23 72Z', lanterna: 'M384 47L370 48Q360 51 355 57L372 58Q382 57 386 55Z',
+    extra: 'M21 82Q30 81 36 86L38 96Q29 97 22 95' },
+  sedan_medio: { nome: 'Sedã médio', ex: 'Corolla, Civic, Cruze, Jetta, Sentra, City',
+    R: 24, yb: 105, rodas: [80, 312],
+    topo: [[14,104,0],[12,88],[15,68],[32,54],[98,45],[114,43,.6],[168,17],[212,12],[264,15],[306,30],[334,35],[378,30,.4],[385,42,.5],[391,68],[390,94],[383,104,0]],
+    janelas: [[[121,50],[167,24,8],[208,19,3],[210,48,2]], [[217,47,2],[216,19,3],[262,20,10],[292,36,4],[300,42,2],[270,45,3]]],
+    vinco: [[30,58],[120,55],[250,51],[330,46],[382,44]], vinco2: [[122,88],[200,86],[280,82]],
+    portas: ['M120 52C116 70 117 90 123 103','M212 49L210 104','M302 43C302 60 291 72 285 80Q279 90 280 103'],
+    macanetas: [[190,59],[282,54]], espelho: [127,53], tanque: [322,48],
+    farol: 'M15 66L27 59Q45 55 60 57L55 62Q38 67 17 72Z', lanterna: 'M389 45L374 47Q362 50 355 56L373 57Q383 56 390 54Z',
+    extra: 'M14 80Q22 79 28 84L30 96Q22 97 15 95' },
+  suv_compacto: { nome: 'SUV compacto', ex: 'Creta, T-Cross, Kicks, Tracker, HR-V, Renegade, Pulse, Nivus, 2008',
+    R: 24, yb: 100, rodas: [90, 302],
+    topo: [[26,99,0],[24,84],[26,64],[40,50],[104,42],[120,40,.6],[166,16],[200,12],[300,13],[340,18,.6],[358,30],[368,52],[371,88],[364,99,0]],
+    janelas: [[[128,41],[168,20,8],[212,17,3],[214,40,2]], [[221,40,2],[220,17,3],[288,17,4],[290,39,2]], [[296,38,2],[295,17,3],[318,18,6],[330,30,2],[332,36,2]]],
+    vinco: [[32,52],[130,48],[260,44],[350,40],[368,40]], vinco2: [[126,82],[210,80],[278,77]],
+    portas: ['M126 43C122 62 123 84 128 98','M217 41L215 99','M292 40C293 56 288 64 280 70'],
+    macanetas: [[196,50],[284,47]], espelho: [132,44], tanque: [318,46],
+    farol: 'M26 60L40 52Q56 49 72 51L66 56Q46 60 27 64Z', lanterna: 'M369 40L356 40Q350 46 350 54L367 54Q371 48 369 40Z',
+    extra: 'M25 76Q34 75 40 80L42 92Q33 93 26 91M178 13Q180 9 188 9H304Q311 9 313 13' },
+  suv_medio: { nome: 'SUV médio / grande', ex: 'Compass, Commander, SW4, Trailblazer, Tucson, Tiguan, Pajero',
+    R: 25, yb: 99, rodas: [86, 316],
+    topo: [[16,98,0],[14,82],[16,62],[30,46],[100,38],[118,36,.6],[160,13],[192,9],[318,9],[356,13,.6],[372,24],[380,48],[382,88],[376,98,0]],
+    janelas: [[[126,37],[164,17,8],[210,14,3],[212,36,2]], [[219,36,2],[218,14,3],[290,14,4],[292,35,2]], [[298,35,2],[297,14,3],[340,14,6],[352,24,3],[354,33,2]]],
+    vinco: [[22,48],[130,44],[270,40],[360,36],[380,36]], vinco2: [[124,80],[210,78],[288,75]],
+    portas: ['M124 39C120 60 121 82 126 97','M215 37L213 98','M295 36C296 54 294 64 288 72'],
+    macanetas: [[194,46],[284,43]], espelho: [130,40], tanque: [336,42],
+    farol: 'M16 56L30 48Q48 45 66 47L60 52Q40 56 17 60Z', lanterna: 'M381 36L368 36Q362 42 362 52L379 52Q383 44 381 36Z',
+    extra: 'M15 72Q25 71 31 76L33 90Q24 91 16 89M168 10Q170 6 178 6H330Q337 6 339 10' },
+  minivan: { nome: 'Minivan', ex: 'Spin, Meriva, Zafira, Idea, Livina, Fit',
+    R: 22, yb: 103, rodas: [90, 300],
+    topo: [[24,102,0],[22,86],[25,68],[40,56],[86,50],[100,47,.6],[148,16],[176,10],[316,10],[350,14,.6],[364,26],[370,52],[372,92],[366,102,0]],
+    janelas: [[[108,48],[150,20,8],[196,15,3],[198,45,2]], [[205,45,2],[204,15,3],[272,15,4],[274,43,2]], [[280,43,2],[279,15,3],[330,15,8],[350,26,3],[352,40,2]]],
+    vinco: [[30,58],[110,55],[260,50],[360,46],[370,46]], vinco2: [[110,86],[200,84],[270,80]],
+    portas: ['M106 50C102 70 103 88 108 101','M201 46L199 102','M277 44C278 60 278 70 274 78'],
+    macanetas: [[180,54],[266,52]], espelho: [112,51], tanque: [314,50],
+    farol: 'M24 66L36 58Q50 54 64 56L58 61Q42 66 25 70Z', lanterna: 'M369 42L358 42Q353 48 353 58L368 58Q371 50 369 42Z',
+    extra: 'M23 80Q32 79 38 84L40 95Q31 96 24 94' },
+  picape_pequena: { nome: 'Picape pequena', ex: 'Strada, Saveiro, Montana, Courier',
+    R: 23, yb: 101, rodas: [86, 300],
+    topo: [[20,100,0],[18,85],[21,66],[36,54],[100,46],[116,44,.6],[162,19],[196,15],[248,15,.5],[256,20,.3],[258,44,0],[386,44,0],[388,60],[388,90],[382,100,0]],
+    janelas: [[[124,45],[164,23,8],[204,19,3],[206,43,2]], [[213,43,2],[212,19,3],[244,19,4],[248,40,2]]],
+    vinco: [[26,56],[124,53],[256,48]], vinco2: [[266,62],[320,61],[380,60]],
+    portas: ['M122 47C118 66 119 86 124 99','M209 44L207 100','M253 42L253 99'],
+    macanetas: [[188,52],[244,50]], espelho: [128,48], tanque: [272,52],
+    farol: 'M20 64L32 56Q48 52 64 54L58 59Q40 64 21 68Z', lanterna: 'M387 48L380 48Q378 54 378 62L387 62Z',
+    extra: 'M19 80Q28 79 34 84L36 94Q27 95 20 93M262 46V98M380 48V94' },
+  picape_media: { nome: 'Picape média', ex: 'Hilux, S10, Ranger, Amarok, Toro, Frontier, L200',
+    R: 26, yb: 96, rodas: [82, 306],
+    topo: [[14,95,0],[12,78],[14,58],[28,44],[96,36],[114,34,.6],[154,12],[188,8],[262,8,.5],[270,13,.3],[272,40,0],[390,40,0],[392,56],[392,86],[386,95,0]],
+    janelas: [[[122,35],[158,16,8],[204,12,3],[206,33,2]], [[213,33,2],[212,12,3],[256,12,4],[262,31,2]]],
+    vinco: [[20,46],[120,43],[268,38]], vinco2: [[280,56],[330,55],[384,54]],
+    portas: ['M120 37C116 58 117 80 122 94','M209 34L207 95','M266 33L266 94'],
+    macanetas: [[188,42],[254,40]], espelho: [126,38], tanque: [288,48],
+    farol: 'M14 54L28 46Q46 42 64 44L58 49Q38 54 15 58Z', lanterna: 'M391 44L382 44Q380 50 380 60L391 60Z',
+    extra: 'M13 72Q23 71 29 76L31 88Q22 89 14 87M276 42V94M384 44V90M118 101H268' },
+  furgao: { nome: 'Furgão pequeno', ex: 'Fiorino, Kangoo, Partner, Doblò Cargo, Berlingo',
+    R: 22, yb: 104, rodas: [92, 304],
+    topo: [[26,103,0],[24,87],[27,69],[42,57],[96,50],[110,48,.6],[150,22],[176,17],[198,16,.4],[204,7,.4],[214,4],[370,4,.4],[376,10,.5],[378,40],[380,92],[374,103,0]],
+    janelas: [[[118,49],[154,24,8],[194,20,3],[196,46,2]]],
+    vinco: [[32,59],[118,56],[200,53],[376,50]], vinco2: [[118,88],[190,86]],
+    portas: ['M116 51C112 70 113 90 118 102','M200 48L199 103'],
+    macanetas: [[176,56]], espelho: [122,52], tanque: [216,56],
+    farol: 'M26 67L38 59Q52 55 66 57L60 62Q44 67 27 71Z', lanterna: 'M379 44L371 44Q370 52 370 62L379 62Z',
+    extra: 'M25 81Q34 80 40 85L42 96Q33 97 26 95M204 12V100M370 10V98' },
+  van: { nome: 'Van', ex: 'Ducato, Sprinter, Master, Boxer, Daily, Transit, Kombi',
+    R: 23, yb: 100, rodas: [74, 300],
+    topo: [[16,99,0],[14,82],[16,62],[26,50],[56,44],[70,40,.5],[100,12],[118,4],[384,4,.4],[390,10,.5],[390,92],[384,99,0]],
+    janelas: [[[76,40],[104,14,6],[134,10,3],[136,40,2]]],
+    vinco: [[22,52],[80,50],[388,46]], vinco2: [[80,82],[200,80],[266,78]],
+    portas: ['M74 42C70 62 72 84 78 98','M140 10L140 99'],
+    macanetas: [[124,52],[196,52]], espelho: [82,44], tanque: [160,60],
+    farol: 'M16 58L26 50Q40 47 52 49L46 54Q32 58 17 62Z', lanterna: 'M389 46L382 46V66H389Z',
+    extra: 'M15 76Q24 75 30 80L32 92Q23 93 16 91M186 8V99M380 8V96M190 36H266' },
 };
-// a ordem importa: "corolla cross" é SUV antes de "corolla" ser sedã
+const ARTIGO = {"hatch_pequeno": "um hatch pequeno", "hatch_classico": "um hatch clássico", "hatch": "um carro hatch", "sedan_compacto": "um sedã compacto", "sedan_medio": "um sedã médio", "suv_compacto": "um SUV compacto", "suv_medio": "um SUV médio", "minivan": "uma minivan", "picape_pequena": "uma picape pequena", "picape_media": "uma picape média", "furgao": "um furgão", "van": "uma van"};
+// a ordem importa: o primeiro que casar vence ("corolla cross" é SUV antes de "corolla" ser sedã)
 const TIPOS = [
-  ['suv', /corolla cross|compass|renegade|commander|creta|hr-?v|wr-?v|kicks|t-?cross|tracker|ecosport|duster|sw4|trailblazer|tucson|ix35|sportage|captur|pulse|fastback|tiggo|rav ?4|nivus|taos|tiguan|\b2008\b|\b3008\b|jimny|pajero|territory|equinox|outlander|asx|\bsuv\b/],
-  ['picape', /strada|saveiro|toro|hilux|\bs-?10\b|ranger|amarok|frontier|montana|oroch|l200|triton|maverick|rampage|courier|\bd-?20\b|picape|pick-?up|caminhonete/],
-  ['furgao', /fiorino|kangoo|doblo|partner|master|ducato|sprinter|kombi|expert|daily|\bhr\b|bongo|furg|\bvan\b|boxer|jumper|trafic/],
-  ['sedan', /corolla|civic|prisma|voyage|virtus|cobalt|siena|cruze|jetta|\bcity\b|versa|sentra|logan|fluence|cronos|onix plus|hb20s|ka sedan|ka\+|yaris sedan|fiesta sedan|polo sedan|focus sedan|etios sedan|vectra|astra sedan|corsa sedan|classic|linea|accord|camry|fusion|elantra|cerato|sedan|sedã/],
+  ['van', /ducato|sprinter|master|boxer|jumper|daily|transit|kombi|trafic|(?<![\w-])hr(?![\w-])|bongo|\bvan\b|micro-?onibus/],
+  ['furgao', /fiorino|kangoo|partner|berlingo|doblo cargo|expert|furg/],
+  ['suv_medio', /compass|commander|sw4|trailblazer|tucson|ix35|sportage|tiguan|pajero|outlander|rav ?4|territory|equinox|taos|tiggo ?[78]|grand vitara|santa fe|sorento|cr-?v|x-?trail|3008|5008|captiva|blazer|land cruiser|discovery/],
+  ['picape_media', /hilux|\bs-?10\b|ranger|amarok|frontier|l200|triton|toro|maverick|rampage|\bd-?20\b|f-?250|\bram\b|dakota|caminhonete/],
+  ['picape_pequena', /strada|saveiro|montana|oroch|courier|picape|pick-?up/],
+  ['suv_compacto', /corolla cross|renegade|creta|hr-?v|wr-?v|kicks|t-?cross|tracker|ecosport|duster|captur|pulse|fastback|tiggo|nivus|\b2008\b|jimny|asx|aircross|kardian|bronco|\bsuv\b/],
+  ['minivan', /spin|meriva|zafira|\bidea\b|livina|\bfit\b|doblo|picasso|scenic|xsara|carens|minivan/],
+  ['sedan_medio', /corolla|civic|cruze|jetta|sentra|fusion|camry|accord|elantra|cerato|vectra|focus sedan|astra sedan|passat|azera|lancer|altima|optima|sedan medio/],
+  ['sedan_compacto', /onix plus|hb20s|virtus|voyage|logan|cronos|prisma|versa|siena|ka sedan|ka\+|\bcity\b|yaris sedan|etios sedan|fiesta sedan|polo sedan|cobalt|classic|linea|corsa sedan|sedan|seda/],
+  ['hatch_classico', /uno|mille|gol (quadrado|bola|g1|g2|1000|cl|gl)|chevette|escort|corsa wind|fiesta street|\bfusca\b|brasilia|monza|parati/],
+  ['hatch_pequeno', /mobi|kwid|\bup\b|celta|palio|\bka\b|clio|picanto|\bqq\b|march|i10|agile/],
+  ['hatch', /./],
 ];
 function tipoDoModelo(modelo) {
-  const m = String(modelo || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const m = String(modelo || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   for (const [tipo, re] of TIPOS) if (re.test(m)) return tipo;
   return 'hatch';
 }
 function desenhoCarro(modelo) {
-  const f = FORMAS[tipoDoModelo(modelo)];
+  const tipo = tipoDoModelo(modelo);
   const NS = 'http://www.w3.org/2000/svg';
   const s = document.createElementNS(NS, 'svg');
-  s.setAttribute('viewBox', '0 0 340 100'); s.setAttribute('class', 'desenho');
-  s.setAttribute('role', 'img'); s.setAttribute('aria-label', 'Desenho de ' + f.nome);
-  const add = (tag, at) => { const n = document.createElementNS(NS, tag); for (const k in at) n.setAttribute(k, at[k]); s.append(n); };
-  add('path', { d: f.corpo, fill: 'none', stroke: 'currentColor', 'stroke-width': '2.2', 'stroke-linejoin': 'round' });
-  add('path', { d: f.janelas, fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linejoin': 'round', opacity: '.6' });
-  for (const cx of f.r) {
-    add('circle', { cx, cy: 76, r: 15, fill: 'none', stroke: 'currentColor', 'stroke-width': '2.2' });
-    add('circle', { cx, cy: 76, r: 5, fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', opacity: '.6' });
-  }
-  add('path', { d: 'M8 94h324', stroke: '#CE0405', 'stroke-width': '3', 'stroke-linecap': 'round' });
+  s.setAttribute('viewBox', '0 0 400 124'); s.setAttribute('class', 'desenho');
+  s.setAttribute('role', 'img'); s.setAttribute('aria-label', 'Desenho de ' + ARTIGO[tipo]);
+  s.dataset.tipo = tipo;
+  s.innerHTML = silhueta(FAMILIAS[tipo]);
   return s;
 }
 
@@ -348,10 +554,8 @@ function heroi(v, estadoGeral) {
     estadoGeral ? el('span', { class: 'selo-topo ' + estadoGeral, role: 'status' }, titulos[estadoGeral]) : null,
     desenhoCarro(v.modelo),
     el('h1', { id: 'veiculo' }, v.modelo || 'Seu veículo'),
-    el('div', { class: 'meta' },
-      el('span', {}, v.ano || ''),
-      v.km ? el('span', {}, km(v.km)) : el('span', { class: 'vazio' }),
-      v.placa ? placa(v.placa) : el('span', {}))));
+    el('div', { class: 'meta' }, ...[v.ano ? el('span', {}, v.ano) : null, v.km ? el('span', {}, km(v.km)) : null, v.placa ? placa(v.placa) : null]
+      .filter(Boolean).flatMap((x, i) => i ? [el('span', { class: 'ponto', 'aria-hidden': 'true' }), x] : [x]))));
 }
 
 function anel(frac, centro, rotulo, cor) {
@@ -405,19 +609,25 @@ function cartaoProxima(nome, servicos, oleo) {
       el('a', { class: 'botao', href: linkWhats(`Olá! Quero agendar um serviço para o meu ${nome} (código ${codigo}).`), target: '_blank', rel: 'noopener' }, icone(IC.whats()), 'Agendar pelo WhatsApp'));
     return c;
   }
-  const { prazo, frac, estado, proxKm } = oleo;
-  const rotEstado = { ok: 'Em dia', perto: 'Chegando', atrasada: 'Atrasada' }[estado];
+  const { prazo, frac, estado, proxKm, kmAtual } = oleo;
   const f = faltam(prazo);
-  const cor = estado === 'ok' ? '#15803D' : estado === 'perto' ? '#D97706' : '#B91C1C';
+  const restKm = proxKm && kmAtual ? proxKm - kmAtual : null;
+  // número grande: KM que faltam; sem KM, o tempo que falta
+  let grande, legenda, curto = false;
+  if (estado === 'atrasada') { grande = 'Vencida'; legenda = 'desde ' + brDe(prazo); curto = true; }
+  else if (restKm !== null && restKm <= 0) { grande = 'Chegou'; legenda = 'o KM da troca'; curto = true; }
+  else if (restKm !== null) { grande = milhar(restKm); legenda = 'km restantes'; }
+  else { grande = f ? f[0] : '0'; legenda = (f ? f[1] : 'dias') + ' restantes'; }
+  const cheios = estado === 'atrasada' ? 10 : Math.max(1, Math.min(10, Math.round(frac * 10)));
   c.append(
-    el('div', { class: 'linha-tit' }, el('h2', { id: 'tit-prox' }, 'Próxima troca de óleo'), el('span', { class: 'pilula ' + estado }, rotEstado)),
-    el('div', { class: 'proxima' },
-      anel(frac, f ? f[0] : '!', f ? f[1] + ' restantes' : 'vencida', cor),
-      el('div', { class: 'valores' },
-        proxKm ? el('div', {}, el('span', {}, 'Aos'), el('strong', { class: 'prox-km' }, km(proxKm))) : null,
-        el('div', {}, el('span', {}, proxKm ? 'Ou até' : 'Até'), el('strong', { class: 'prox-data' }, brDe(prazo))))),
-    el('p', { class: 'nota' }, estado === 'atrasada' ? 'O prazo da troca já passou. Agende para manter o motor protegido.'
-      : proxKm ? 'O que vier primeiro: o KM ou a data.' : 'Troca recomendada por tempo.'),
+    el('div', { class: 'linha-tit' }, el('h2', { id: 'tit-prox' }, 'Próxima troca de óleo'),
+      el('span', { class: 'quando ' + estado }, f ? `em ${f[0]} ${f[1]}` : 'Atrasada')),
+    el('div', { class: 'restam' }, el('strong', { class: curto ? 'curto' : null }, grande), el('span', {}, legenda)),
+    el('div', { class: 'segmentos ' + estado, role: 'img', 'aria-label': `${cheios * 10}% do prazo da troca já passou` },
+      Array.from({ length: 10 }, (_, i) => el('span', { class: i < cheios ? 'cheio' : null }))),
+    el('div', { class: 'blocos' },
+      proxKm ? el('div', {}, el('span', {}, 'Aos'), el('strong', { class: 'prox-km' }, km(proxKm))) : null,
+      el('div', {}, el('span', {}, proxKm ? 'Ou até' : 'Até'), el('strong', { class: 'prox-data' }, brDe(prazo)))),
     el('a', { class: 'botao', href: linkWhats(estado === 'ok'
       ? `Olá! Quero agendar um serviço para o meu ${nome} (código ${codigo}).`
       : `Olá! Quero agendar a troca de óleo do meu ${nome} (código ${codigo}).`), target: '_blank', rel: 'noopener' },
@@ -461,26 +671,33 @@ function cartaoFeito(s) {
 
 // saúde do carro: cada item do plano + correia dentada
 function saude(servicos, oleo, correia) {
-  const itens = CONFIG.plano.map(([item, meses]) => {
+  const itens = CONFIG.plano.map(([item, meses, kmIntervalo]) => {
     if (item === 'Óleo do motor' && oleo) {
-      return { nome: item, ic: IC.gota, estado: oleo.estado === 'atrasada' ? 'verificar' : oleo.estado, txt: oleo.estado === 'atrasada' ? 'troca atrasada' : 'até ' + brDe(oleo.prazo) };
+      return { nome: item, ic: IC.gota, estado: oleo.estado === 'atrasada' ? 'verificar' : oleo.estado,
+        quando: oleo.estado === 'atrasada' ? 'troca atrasada' : 'até ' + brDe(oleo.prazo), km: oleo.proxKm };
     }
     const s = servicos.find((x) => (x.itens || []).includes(item));
     const d = s && dataDe(s.data);
     const ic = /Filtro/.test(item) ? IC.filtro : /freio/.test(item) ? IC.freio : /câmbio/.test(item) ? IC.engrenagem : IC.gota;
-    if (!d) return { nome: item, ic, estado: 'sem', txt: 'sem registro aqui' };
+    if (!d) return { nome: item, ic, estado: 'sem', quando: 'sem registro aqui' };
     const m = mesesDesde(d);
     const estado = m >= meses ? 'verificar' : m >= meses * 0.8 ? 'perto' : 'ok';
-    return { nome: item, ic, estado, txt: estado === 'verificar' ? `trocado ${haQuanto(d)} — verificar` : `trocado ${haQuanto(d)}` };
+    // filtro de óleo trocado junto com o óleo segue o KM do óleo
+    const proxKm = item === 'Filtro de óleo' && oleo && oleo.proxKm && (s.itens || []).includes('Óleo do motor') ? oleo.proxKm
+      : s.km ? s.km + kmIntervalo : null;
+    return { nome: item, ic, estado, quando: (estado === 'verificar' ? 'venceu em ' : 'até ') + brDe(maisMeses(d, meses)), km: proxKm };
   });
-  if (correia) itens.splice(1, 0, { nome: 'Correia dentada', ic: IC.correia, estado: correia.estado === 'atrasada' ? 'verificar' : correia.estado, txt: (correia.estado === 'atrasada' ? 'vencida desde ' : 'até ') + brDe(correia.prazo) });
+  if (correia) itens.splice(1, 0, { nome: 'Correia dentada', ic: IC.correia, estado: correia.estado === 'atrasada' ? 'verificar' : correia.estado,
+    quando: (correia.estado === 'atrasada' ? 'vencida desde ' : 'até ') + brDe(correia.prazo), km: correia.proxKm });
   const sinal = { ok: [IC.checkCheio(20), 'em dia'], perto: [IC.relogio, 'chegando'], verificar: [IC.alerta, 'verificar'], sem: [IC.semRegistro, 'sem registro'] };
   return el('section', { class: 'secao', 'aria-labelledby': 'tit-saude' },
     el('h2', { id: 'tit-saude' }, 'Saúde do carro'),
-    el('p', { class: 'ref' }, 'Referência por tempo. O manual do seu carro e o KM rodado mandam; na dúvida, fale com a gente.'),
+    el('p', { class: 'ref' }, 'O que vier primeiro: o KM ou a data. É uma referência geral — o manual do seu carro manda; na dúvida, fale com a gente.'),
     el('ul', { class: 'saude' }, itens.map((i) => el('li', { class: i.estado },
       el('span', { class: 'cab' }, icone(i.ic), icone(sinal[i.estado][0], { role: 'img', 'aria-label': sinal[i.estado][1] })),
-      el('strong', {}, i.nome), el('span', { class: 'q' }, i.txt)))));
+      el('strong', {}, i.nome),
+      i.km ? el('span', { class: 'km' }, 'Aos ', el('b', {}, km(i.km))) : null,
+      el('span', { class: 'q' }, i.km && /^até /.test(i.quando) ? 'ou ' + i.quando : i.quando)))));
 }
 
 function linhaDoTempo(servicos) {
@@ -590,7 +807,8 @@ function telaHistorico(d) {
     const inicio = dataDe(ultimaOleo.data);
     const prazo = dataDe(ultimaOleo.proximaTrocaData) || maisMeses(inicio, CONFIG.mesesTrocaOleo);
     const frac = Math.min(1, Math.max(0, (Date.now() - inicio) / Math.max(1, prazo - inicio)));
-    oleo = { inicio, prazo, frac, estado: estadoDe(frac), proxKm: comProxima && comProxima.proximaTrocaKm };
+    oleo = { inicio, prazo, frac, estado: estadoDe(frac), proxKm: comProxima && comProxima.proximaTrocaKm,
+      kmAtual: servicos.reduce((m, s) => Math.max(m, s.km || 0), 0) || null };
   }
   // correia dentada
   const sc = servicos.find((x) => x.proximaCorreiaData || x.proximaCorreiaKm);
@@ -598,7 +816,7 @@ function telaHistorico(d) {
   if (sc && dataDe(sc.proximaCorreiaData)) {
     const prazo = dataDe(sc.proximaCorreiaData);
     const dias = (prazo - Date.now()) / 864e5;
-    correia = { prazo, estado: dias <= 0 ? 'atrasada' : dias <= 60 ? 'perto' : 'ok' };
+    correia = { prazo, estado: dias <= 0 ? 'atrasada' : dias <= 60 ? 'perto' : 'ok', proxKm: sc.proximaCorreiaKm || null };
   }
   const ordem = { ok: 0, perto: 1, atrasada: 2 };
   let geral = oleo ? oleo.estado : correia ? 'ok' : null;
