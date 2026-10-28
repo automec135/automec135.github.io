@@ -1,6 +1,6 @@
-id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs,proxima_troca_data,proxima_correia_km,proxima_correia_data,garantia
-_,2026-10-28T16:42,,,,,,,,,,,
-12ab83b546e691b5d91a,,,,,,,,,,,,
+id,modelo,ano,data,km,itens,outros,proxima_troca_km,obs,proxima_troca_data,proxima_correia_km,proxima_correia_data,garantia,placa_cifrada
+_,2026-10-28T18:40,,,,,,,,,,,,
+12ab83b546e691b5d91a,,,,,,,,,,,,,yRXkIYMJQU9Jo86699jgyGMaCKErPbpvT4o26w1IyzGlqLE=
 cb09c2631c6ff4734126,Celta 1.0,2005,2026-10-28,144369,Óleo do motor; Filtro de óleo,"Aditivo concentrado radiador orgânico rosa 1L
 Junta tampa válvula encaixe
 Válvula termostática
@@ -18,15 +18,15 @@ Atuador marcha lenta
 Rol rd dt unico 34X66X37MM
 Correia dentada
 Tensor
-Bomba d'água",149369,Óleo Petronas Syntium 800 15W40 semissintético,2027-04-28,184369,2027-10-28,
+Bomba d'água",149369,Óleo Petronas Syntium 800 15W40 semissintético,2027-04-28,184369,2027-10-28,,cXA4ES3mNMnv+3tmqfvdfWqjNc2spoaf1YvpcVULSG3Rku8=
 d736d6de56d7625c2c35,Golf 1.6 Mtr Power,2008,2026-10-23,317874,Óleo do motor; Filtro de óleo,"Aditivo concentrado radiador orgânico rosa 1L
 Tubo refrig
 Tampa reserv. 21071
 Reserv. água radiador
 Int temp radiador universal 92
-Inter. pressão de óleo",318874,15w40,2027-04-23,,,
-e3f1d4ebb29055681d02,corsa sedan,2002/2003,2026-10-23,227750,Óleo do motor; Filtro de óleo,Reparo tramb,232750,Óleo Petronas Syntium 800 15W40 semissintético,2027-04-23,,,
-7ccc4af0a5bb61f7461d,,,,,,,,,,,,
+Inter. pressão de óleo",318874,15w40,2027-04-23,,,,PKe1VTeP2Wd55ICsvUcVgoAiFeyL58KNaITnnP4HI1UfGt8=
+e3f1d4ebb29055681d02,corsa sedan,2002/2003,2026-10-23,227750,Óleo do motor; Filtro de óleo,Reparo tramb,232750,Óleo Petronas Syntium 800 15W40 semissintético,2027-04-23,,,,Ac8fO92QiM/2Dy8wesQr/wYrakgohAh+zhXFhuiybdu+xnc=
+7ccc4af0a5bb61f7461d,,,,,,,,,,,,,XgeMfr4UwRkNMA4fXGfRctq//7b23tnkJ8SjEEbgBqAwfKw=
 da509385439c7ca30f74,Cruze,2012,2026-10-22,104773,Óleo do motor; Filtro de óleo,"Kit válvula retenção
 Junta cabeçote
 Faceamento do cabeçote
@@ -34,12 +34,12 @@ Lingua de sogra media
 Militec-1 condicionador de metais
 Abrir rosca, colocar bucha ou helicoide
 Rolamento tensor correia dentada
-Mangueira do suspiro ar",109773,Óleo Motul 5W30,2027-04-22,144773,2027-10-22,
-ac28cd478b6595e828f6,,,,,,,,,,,,
+Mangueira do suspiro ar",109773,Óleo Motul 5W30,2027-04-22,144773,2027-10-22,,OfwdP7uVMxE2in1htyFBj//u8fjsU0G+5m+jHPLE/S1gjgA=
+ac28cd478b6595e828f6,,,,,,,,,,,,,x7ODxmwx0zP9ZHLv9Tjxx2l5BB52dcLG2yOQdftq+O+mxfk=
 caf77b95808e05cd7079,Corolla XEI 2.0,2021/2022,2026-10-22,39742,,"Descarbonização do motor
 Ultrasson bico de baixa pressão
 Ultrasson de bico alta pressão
 Serviço mecanico+zera contador de falhas
 Aditivo pronto uso radiador org.rosa 1L
-Vela ignição",,5w30,,,,
-10d476729870b6ae483f,,,,,,,,,,,,
+Vela ignição",,5w30,,,,,uoWFiaJX2JuSaOROgbOJndVuMRo+pO/Xf4/JP5B/VvPiuuc=
+10d476729870b6ae483f,,,,,,,,,,,,,7eoX2eu/RlH/0p86O7S/piyG+/6hlK7df/jRBRPstcTGEvU=
